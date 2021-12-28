@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "JsonSchema.TestSuiteRunner": {
+      "commandName": "Project",
+      "commandLineArgs": "--schema ../tests/draft2019-09/additionalItems.json#/0/schema --instance ../tests/draft2019-09/additionalItems.json#/0/tests/1/data"
+    }
+  }
+}
