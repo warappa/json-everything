@@ -52,7 +52,7 @@ internal class Program
 	/// <param name="schema">An option whose argument is parsed as an int</param>
 	/// <param name="instance">An option whose argument is parsed as a bool</param>
 	/// <param name="specVersion">An option whose argument is parsed as a FileInfo</param>
-	public static void Main(Uri schema, Uri instance, string? specVersion = null)
+	public static int Main(Uri schema, Uri instance, string? specVersion = null)
     {
         Draft? draft = null;
         if (specVersion != null)
@@ -61,15 +61,19 @@ internal class Program
             {
                 "6" => Draft.Draft6,
                 "06" => Draft.Draft6,
+                "draft6" => Draft.Draft6,
                 "draft-6" => Draft.Draft6,
                 "draft-06" => Draft.Draft6,
                 "7" => Draft.Draft7,
                 "07" => Draft.Draft7,
+                "draft7" => Draft.Draft7,
                 "draft-7" => Draft.Draft7,
                 "draft-07" => Draft.Draft7,
                 "2019-09" => Draft.Draft201909,
+                "draft2019-09" => Draft.Draft201909,
                 "draft-2019-09" => Draft.Draft201909,
                 "2020-12" => Draft.Draft202012,
+                "draft2020-12" => Draft.Draft202012,
                 "draft-2020-12" => Draft.Draft202012,
                 _ => null
             };
@@ -78,9 +82,9 @@ internal class Program
             {
                 Console.WriteLine($"`{specVersion}` is not supported.");
                 Environment.ExitCode = 2;
-                return;
+                return Environment.ExitCode;
             }
-        }
+		}
 
         string schemaText;
         try
@@ -92,10 +96,10 @@ internal class Program
             Console.WriteLine("Cannot determine schema from URI provided.");
             Console.Error.WriteLine(e);
             Environment.ExitCode = 1;
-            return;
+            return Environment.ExitCode;
         }
 
-        string instanceText;
+		string instanceText;
         try
         {
             instanceText = GetFileContext(instance);
@@ -105,22 +109,29 @@ internal class Program
             Console.WriteLine("Cannot determine instance from URI provided.");
             Console.Error.WriteLine(e);
             Environment.ExitCode = 1;
-            return;
+            return Environment.ExitCode;
         }
 
         try
         {
             Environment.ExitCode = Run(schemaText, instanceText, draft);
         }
-        catch (Exception e)
+        catch (JsonException e)
+        {
+            Console.WriteLine("Unsupported data was found.");
+            Console.Error.WriteLine(e);
+            Environment.ExitCode = 2;
+        }
+		catch (Exception e)
         {
             Console.WriteLine("An error occurred trying to run the test.");
             Console.Error.WriteLine(e);
             Environment.ExitCode = 1;
         }
+        return Environment.ExitCode;
 	}
 
-    private static (string, string) GetPathAndPointer(Uri fileAndPointer)
+	private static (string, string) GetPathAndPointer(Uri fileAndPointer)
     {
         var parts = fileAndPointer.OriginalString.Split('#');
 
@@ -149,7 +160,7 @@ internal class Program
 		if (draft.HasValue)
             options.ValidateAs = draft.Value;
 
-        var result = schema.Validate(instance, options);
+        var result = schema!.Validate(instance, options);
         return result.IsValid ? 0 : -1;
     }
 }
