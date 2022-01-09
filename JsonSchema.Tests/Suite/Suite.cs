@@ -60,16 +60,18 @@ namespace Json.Schema.Tests.Suite
 				{
 					PropertyNameCaseInsensitive = true
 				});
+                var localOptions = ValidationOptions.From(options);
+                localOptions.RequireFormatValidation = fileName.Contains("format/".AdjustForPlatform());
 
 				foreach (var collection in collections)
-				{
+                {
 					collection.IsOptional = fileName.Contains("optional");
 					foreach (var test in collection.Tests)
 					{
 						var optional = collection.IsOptional ? "(optional)/" : null;
 						var name = $"{draftFolder}/{optional}{collection.Description.Kebaberize()}/{test.Description.Kebaberize()}";
-						allTests.Add(new TestCaseData(collection, test, shortFileName, options) { TestName = name });
-					}
+                        allTests.Add(new TestCaseData(collection, test, shortFileName, localOptions) {TestName = name});
+                    }
 				}
 			}
 
@@ -117,13 +119,21 @@ namespace Json.Schema.Tests.Suite
 			if (!InstanceIsDeserializable(test.Data))
 				Assert.Inconclusive("Instance not deserializable");
 
-			var result = collection.Schema.Validate(test.Data, options);
-			result.ToDetailed();
-			Console.WriteLine(JsonSerializer.Serialize(result, serializerOptions));
+            try
+            {
+                var result = collection.Schema.Validate(test.Data, options);
+                result.ToDetailed();
+                Console.WriteLine(JsonSerializer.Serialize(result, serializerOptions));
 
-			if (collection.IsOptional && result.IsValid != test.Valid)
-				Assert.Inconclusive("Test optional");
-			Assert.AreEqual(test.Valid, result.IsValid);
+                if (collection.IsOptional && result.IsValid != test.Valid)
+                    Assert.Inconclusive("Test optional");
+                Assert.AreEqual(test.Valid, result.IsValid);
+            }
+            catch (NotSupportedException e)
+            {
+                Console.WriteLine(e);
+                Assert.Inconclusive(e.Message);
+            }
 		}
 
 		//[TestCaseSource(nameof(TestCases))]

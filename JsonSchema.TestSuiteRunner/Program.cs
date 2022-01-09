@@ -116,7 +116,7 @@ internal class Program
         {
             Environment.ExitCode = Run(schemaText, instanceText, draft);
         }
-        catch (JsonException e)
+        catch (Exception e) when (e is FormatException or JsonException or NotSupportedException)
         {
             Console.WriteLine("Unsupported data was found.");
             Console.Error.WriteLine(e);
