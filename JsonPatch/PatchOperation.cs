@@ -2,7 +2,6 @@
 using System.Text.Json;
 using System.Text.Json.Serialization;
 using Json.More;
-using Json.Pointer;
 
 namespace Json.Patch;
 
@@ -21,17 +20,19 @@ public readonly struct PatchOperation : IEquatable<PatchOperation>
 	/// <summary>
 	/// Gets the source path.
 	/// </summary>
-	public JsonPointer From { get; }
+	[JsonConverter(typeof(PathResolverConverter))]
+	public IPathResolver From { get; }
 	/// <summary>
 	/// Gets the target path.
 	/// </summary>
-	public JsonPointer Path { get; }
+	[JsonConverter(typeof(PathResolverConverter))]
+	public IPathResolver Path { get; }
 	/// <summary>
 	/// Gets the discrete value.
 	/// </summary>
 	public JsonElement Value { get; }
 
-	private PatchOperation(OperationType op, JsonPointer from, JsonPointer path, JsonElement value, IPatchOperationHandler handler)
+	private PatchOperation(OperationType op, IPathResolver from, IPathResolver path, JsonElement value, IPatchOperationHandler handler)
 	{
 		_handler = handler;
 		Op = op;
@@ -46,9 +47,9 @@ public readonly struct PatchOperation : IEquatable<PatchOperation>
 	/// <param name="path">The source path.</param>
 	/// <param name="value">The value to add.</param>
 	/// <returns>An `add` operation.</returns>
-	public static PatchOperation Add(JsonPointer path, JsonElement value)
+	public static PatchOperation Add(IPathResolver path, JsonElement value)
 	{
-		return new PatchOperation(OperationType.Add, JsonPointer.Empty, path, value, AddOperationHandler.Instance);
+		return new PatchOperation(OperationType.Add, PointerResolver.Empty, path, value, AddOperationHandler.Instance);
 	}
 
 	/// <summary>
@@ -57,9 +58,9 @@ public readonly struct PatchOperation : IEquatable<PatchOperation>
 	/// <param name="path">The source path.</param>
 	/// <param name="value">The value to add.</param>
 	/// <returns>An `add` operation.</returns>
-	public static PatchOperation Add(JsonPointer path, JsonElementProxy value)
+	public static PatchOperation Add(IPathResolver path, JsonElementProxy value)
 	{
-		return new PatchOperation(OperationType.Add, JsonPointer.Empty, path, value, AddOperationHandler.Instance);
+		return new PatchOperation(OperationType.Add, PointerResolver.Empty, path, value, AddOperationHandler.Instance);
 	}
 
 	/// <summary>
@@ -67,9 +68,9 @@ public readonly struct PatchOperation : IEquatable<PatchOperation>
 	/// </summary>
 	/// <param name="path">The source path.</param>
 	/// <returns>An `remove` operation.</returns>
-	public static PatchOperation Remove(JsonPointer path)
+	public static PatchOperation Remove(IPathResolver path)
 	{
-		return new PatchOperation(OperationType.Remove, JsonPointer.Empty, path, default, RemoveOperationHandler.Instance);
+		return new PatchOperation(OperationType.Remove, PointerResolver.Empty, path, default, RemoveOperationHandler.Instance);
 	}
 
 	/// <summary>
@@ -78,9 +79,9 @@ public readonly struct PatchOperation : IEquatable<PatchOperation>
 	/// <param name="path">The source path.</param>
 	/// <param name="value">The value to add.</param>
 	/// <returns>An `replace` operation.</returns>
-	public static PatchOperation Replace(JsonPointer path, JsonElement value)
+	public static PatchOperation Replace(IPathResolver path, JsonElement value)
 	{
-		return new PatchOperation(OperationType.Replace, JsonPointer.Empty, path, value, ReplaceOperationHandler.Instance);
+		return new PatchOperation(OperationType.Replace, PointerResolver.Empty, path, value, ReplaceOperationHandler.Instance);
 	}
 
 	/// <summary>
@@ -89,9 +90,9 @@ public readonly struct PatchOperation : IEquatable<PatchOperation>
 	/// <param name="path">The source path.</param>
 	/// <param name="value">The value to add.</param>
 	/// <returns>An `replace` operation.</returns>
-	public static PatchOperation Replace(JsonPointer path, JsonElementProxy value)
+	public static PatchOperation Replace(IPathResolver path, JsonElementProxy value)
 	{
-		return new PatchOperation(OperationType.Replace, JsonPointer.Empty, path, value, ReplaceOperationHandler.Instance);
+		return new PatchOperation(OperationType.Replace, PointerResolver.Empty, path, value, ReplaceOperationHandler.Instance);
 	}
 
 	/// <summary>
@@ -100,7 +101,7 @@ public readonly struct PatchOperation : IEquatable<PatchOperation>
 	/// <param name="path">The target path.</param>
 	/// <param name="from">The path to the value to move.</param>
 	/// <returns>An `move` operation.</returns>
-	public static PatchOperation Move(JsonPointer from, JsonPointer path)
+	public static PatchOperation Move(IPathResolver from, IPathResolver path)
 	{
 		return new PatchOperation(OperationType.Move, from, path, default, MoveOperationHandler.Instance);
 	}
@@ -111,7 +112,7 @@ public readonly struct PatchOperation : IEquatable<PatchOperation>
 	/// <param name="path">The target path.</param>
 	/// <param name="from">The path to the value to move.</param>
 	/// <returns>An `copy` operation.</returns>
-	public static PatchOperation Copy(JsonPointer from, JsonPointer path)
+	public static PatchOperation Copy(IPathResolver from, IPathResolver path)
 	{
 		return new PatchOperation(OperationType.Copy, from, path, default, CopyOperationHandler.Instance);
 	}
@@ -122,9 +123,9 @@ public readonly struct PatchOperation : IEquatable<PatchOperation>
 	/// <param name="path">The source path.</param>
 	/// <param name="value">The value to match.</param>
 	/// <returns>An `test` operation.</returns>
-	public static PatchOperation Test(JsonPointer path, JsonElement value)
+	public static PatchOperation Test(IPathResolver path, JsonElement value)
 	{
-		return new PatchOperation(OperationType.Test, JsonPointer.Empty, path, value, TestOperationHandler.Instance);
+		return new PatchOperation(OperationType.Test, PointerResolver.Empty, path, value, TestOperationHandler.Instance);
 	}
 
 	/// <summary>
@@ -133,9 +134,9 @@ public readonly struct PatchOperation : IEquatable<PatchOperation>
 	/// <param name="path">The source path.</param>
 	/// <param name="value">The value to match.</param>
 	/// <returns>An `test` operation.</returns>
-	public static PatchOperation Test(JsonPointer path, JsonElementProxy value)
+	public static PatchOperation Test(IPathResolver path, JsonElementProxy value)
 	{
-		return new PatchOperation(OperationType.Test, JsonPointer.Empty, path, value, TestOperationHandler.Instance);
+		return new PatchOperation(OperationType.Test, PointerResolver.Empty, path, value, TestOperationHandler.Instance);
 	}
 
 	internal void Handle(PatchContext context)
@@ -184,8 +185,10 @@ internal class PatchOperationJsonConverter : JsonConverter<PatchOperation>
 	private class Model
 	{
 		public OperationType Op { get; set; }
-		public JsonPointer? From { get; set; }
-		public JsonPointer? Path { get; set; }
+		[JsonConverter(typeof(PathResolverConverter))]
+		public IPathResolver? From { get; set; }
+		[JsonConverter(typeof(PathResolverConverter))]
+		public IPathResolver? Path { get; set; }
 		public JsonElement Value { get; set; }
 	}
 
