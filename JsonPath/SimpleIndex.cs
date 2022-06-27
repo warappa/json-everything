@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
-using System.Text.Json;
+using System.Text.Json.Nodes;
 
 namespace Json.Path;
 
@@ -14,9 +14,9 @@ internal class SimpleIndex : IArrayIndexExpression
 		_index = index;
 	}
 
-	IEnumerable<int> IArrayIndexExpression.GetIndices(JsonElement array)
+	IEnumerable<int> IArrayIndexExpression.GetIndices(JsonArray array)
 	{
-		var length = array.GetArrayLength();
+		var length = array.Count;
 		var end = _index.IsFromEnd ? length - _index.Value : _index.Value;
 		return new[] { end };
 	}

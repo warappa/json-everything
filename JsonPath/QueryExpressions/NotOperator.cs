@@ -1,4 +1,4 @@
-﻿using System.Text.Json;
+﻿using System.Text.Json.Nodes;
 using Json.More;
 
 namespace Json.Path.QueryExpressions;
@@ -12,11 +12,14 @@ internal class NotOperator : IQueryExpressionOperator
 		return QueryExpressionType.Boolean;
 	}
 
-	public JsonElementProxy Evaluate(QueryExpressionNode left, QueryExpressionNode right, JsonElement element)
+	public JsonNode? Evaluate(QueryExpressionNode left, QueryExpressionNode right, JsonNode? element)
 	{
-		var lElement = left.Evaluate(element);
-		return lElement.ValueKind == JsonValueKind.Undefined;
-		//return lElement.ValueKind.In(JsonValueKind.False, JsonValueKind.Null, JsonValueKind.Undefined);
+		var lValue = left.Evaluate(element) as JsonValue;
+		if (lValue is null) return JsonNull.SignalNode;
+
+		if (!lValue.TryGetValue(out bool lb)) return null;
+
+		return !lb;
 	}
 
 	public string ToString(QueryExpressionNode left, QueryExpressionNode right)

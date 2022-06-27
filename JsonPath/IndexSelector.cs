@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text.Json;
+using System.Text.Json.Nodes;
+using Json.More;
 
 namespace Json.Path;
 
@@ -15,38 +16,36 @@ internal class IndexSelector : SelectorBase
 
 	protected override IEnumerable<PathMatch> ProcessMatch(PathMatch match)
 	{
-		switch (match.Value.ValueKind)
+		switch (match.Value)
 		{
-			case JsonValueKind.Array:
-				var array = match.Value.EnumerateArray().ToArray();
-				IEnumerable<int> indices;
-				indices = _ranges?.OfType<IArrayIndexExpression>()
-							  .SelectMany(r => r.GetIndices(match.Value))
-							  .Where(i => 0 <= i && i < array.Length)
-							  .Distinct() ??
-						  Enumerable.Range(0, array.Length);
+			case JsonArray array:
+				var indices = _ranges?.OfType<IArrayIndexExpression>()
+					              .SelectMany(r => r.GetIndices(array))
+					              .Where(i => 0 <= i && i < array.Count)
+					              .Distinct() ??
+				              Enumerable.Range(0, array.Count);
 				foreach (var index in indices)
 				{
 					yield return new PathMatch(array[index], match.Location.AddSelector(new IndexSelector(new[] { (SimpleIndex)index })));
 				}
 				break;
-			case JsonValueKind.Object:
+			case JsonObject obj:
 				if (_ranges != null)
 				{
 					var props = _ranges.OfType<IObjectIndexExpression>()
-						.SelectMany(r => r.GetProperties(match.Value))
+						.SelectMany(r => r.GetProperties(obj))
 						.Distinct();
 					foreach (var prop in props)
 					{
-						if (!match.Value.TryGetProperty(prop, out var value)) continue;
+						if (!obj.TryGetValue(prop, out var value, out _)) continue;
 						yield return new PathMatch(value, match.Location.AddSelector(new IndexSelector(new[] { (PropertyNameIndex)prop })));
 					}
 				}
 				else
 				{
-					foreach (var prop in match.Value.EnumerateObject())
+					foreach (var prop in obj)
 					{
-						yield return new PathMatch(prop.Value, match.Location.AddSelector(new IndexSelector(new[] { (PropertyNameIndex)prop.Name })));
+						yield return new PathMatch(prop.Value, match.Location.AddSelector(new IndexSelector(new[] { (PropertyNameIndex)prop.Key })));
 					}
 				}
 				break;

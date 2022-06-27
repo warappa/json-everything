@@ -1,5 +1,4 @@
-﻿using System;
-using System.Text.Json;
+﻿using System.Text.Json.Nodes;
 using Json.More;
 
 namespace Json.Path.QueryExpressions;
@@ -19,23 +18,25 @@ internal class GreaterThanOperator : IQueryExpressionOperator
 		};
 	}
 
-	public JsonElementProxy Evaluate(QueryExpressionNode left, QueryExpressionNode right, JsonElement element)
+	public JsonNode? Evaluate(QueryExpressionNode left, QueryExpressionNode right, JsonNode? element)
 	{
-		var lElement = left.Evaluate(element);
-		var rElement = right.Evaluate(element);
-		switch (lElement.ValueKind)
+		var lValue = left.Evaluate(element) as JsonValue;
+		if (lValue is null) return null;
+		var rValue = right.Evaluate(element) as JsonValue;
+		if (rValue is null) return null;
+
+		if (lValue.IsNumber())
 		{
-			case JsonValueKind.Number:
-				if (lElement.ValueKind != JsonValueKind.Number ||
-					rElement.ValueKind != JsonValueKind.Number) return default;
-				return lElement.GetDecimal() > rElement.GetDecimal();
-			case JsonValueKind.String:
-				if (lElement.ValueKind != JsonValueKind.String ||
-					rElement.ValueKind != JsonValueKind.String) return default;
-				return string.Compare(lElement.GetString(), rElement.GetString(), StringComparison.Ordinal) > 0;
-			default:
-				return default;
+			var lNumber = lValue.GetNumber();
+			var rNumber = rValue.GetNumber();
+			return lNumber is null || rNumber is null
+				? null
+				: lNumber > rNumber;
 		}
+
+		return !lValue.TryGetValue(out string? lString) || !rValue.TryGetValue(out string? rString)
+			? null
+			: string.CompareOrdinal(lString, rString) > 0;
 	}
 
 	public string ToString(QueryExpressionNode left, QueryExpressionNode right)

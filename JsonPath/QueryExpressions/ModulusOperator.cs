@@ -1,4 +1,4 @@
-﻿using System.Text.Json;
+﻿using System.Text.Json.Nodes;
 using Json.More;
 
 namespace Json.Path.QueryExpressions;
@@ -14,18 +14,18 @@ internal class ModulusOperator : IQueryExpressionOperator
 		return QueryExpressionType.Invalid;
 	}
 
-	public JsonElementProxy Evaluate(QueryExpressionNode left, QueryExpressionNode right, JsonElement element)
+	public JsonNode? Evaluate(QueryExpressionNode left, QueryExpressionNode right, JsonNode? element)
 	{
-		var rElement = right.Evaluate(element);
-		if (rElement.ValueKind != JsonValueKind.Number) return default;
+		var lValue = left.Evaluate(element) as JsonValue;
+		if (lValue is null) return null;
+		var rValue = right.Evaluate(element) as JsonValue;
+		if (rValue is null) return null;
 
-		var rValue = rElement.GetDecimal();
-		if (rValue == 0) return default;
-
-		var lElement = left.Evaluate(element);
-		if (lElement.ValueKind != JsonValueKind.Number) return default;
-
-		return lElement.GetDecimal() % rValue;
+		var lNumber = lValue.GetNumber();
+		var rNumber = rValue.GetNumber();
+		return lNumber is null || rNumber is null or 0
+			? null
+			: lNumber % rNumber;
 	}
 
 	public string ToString(QueryExpressionNode left, QueryExpressionNode right)

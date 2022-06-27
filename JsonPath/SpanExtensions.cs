@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Text.Json;
+using System.Text.Json.Nodes;
 using Json.Path.QueryExpressions;
 
 namespace Json.Path;
@@ -131,7 +132,7 @@ internal static class SpanExtensions
 		return expression != null;
 	}
 
-	public static bool TryParseJsonElement(this ReadOnlySpan<char> span, ref int i, out JsonElement element)
+	public static bool TryParseJsonNode(this ReadOnlySpan<char> span, ref int i, out JsonNode? node)
 	{
 		try
 		{
@@ -210,21 +211,20 @@ internal static class SpanExtensions
 					end++;
 					break;
 				default:
-					element = default;
+					node = default;
 					return false;
 			}
 
 			var block = span[i..end];
 			if (block[0] == '\'' && block[^1] == '\'')
 				block = $"\"{block[1..^1].ToString()}\"".AsSpan();
-			using var doc = JsonDocument.Parse(block.ToString());
-			element = doc.RootElement.Clone();
+			node = JsonNode.Parse(block.ToString());
 			i = end;
 			return true;
 		}
 		catch
 		{
-			element = default;
+			node = default;
 			return false;
 		}
 	}

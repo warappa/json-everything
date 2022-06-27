@@ -1,7 +1,5 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
-using System.Text.Json;
-using Json.More;
+using System.Text.Json.Nodes;
 
 namespace Json.Path;
 
@@ -13,15 +11,13 @@ internal class LengthSelector : SelectorBase
 
 	protected override IEnumerable<PathMatch> ProcessMatch(PathMatch match)
 	{
-		switch (match.Value.ValueKind)
+		switch (match.Value)
 		{
-			case JsonValueKind.Object:
-				yield return new PathMatch(match.Value.EnumerateObject().Count().AsJsonElement(),
-					match.Location.AddSelector(new PropertySelector("length")));
+			case JsonObject obj:
+				yield return new PathMatch(obj.Count, match.Location.AddSelector(new PropertySelector("length")));
 				break;
-			case JsonValueKind.Array:
-				yield return new PathMatch(match.Value.GetArrayLength().AsJsonElement(),
-					match.Location.AddSelector(new PropertySelector("length")));
+			case JsonArray array:
+				yield return new PathMatch(array.Count, match.Location.AddSelector(new PropertySelector("length")));
 				break;
 		}
 	}

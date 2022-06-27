@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Text;
-using System.Text.Json;
+using System.Text.Json.Nodes;
 
 namespace Json.Path;
 
@@ -18,11 +18,11 @@ internal class SliceIndex : IArrayIndexExpression
 		_step = step;
 	}
 
-	IEnumerable<int> IArrayIndexExpression.GetIndices(JsonElement array)
+	IEnumerable<int> IArrayIndexExpression.GetIndices(JsonArray array)
 	{
 		if (_step == 0) return Enumerable.Empty<int>();
 
-		var length = array.GetArrayLength();
+		var length = array.Count;
 		var startUnspecified = _range.Start.IsFromEnd && _range.Start.Value == 0;
 		var start = startUnspecified ? (int?)null : _range.Start.Value * (_range.Start.IsFromEnd ? -1 : 1);
 

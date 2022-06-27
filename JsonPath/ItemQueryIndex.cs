@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
-using System.Text.Json;
+using System.Text.Json.Nodes;
 using Json.Path.QueryExpressions;
 
 namespace Json.Path;
@@ -16,32 +16,29 @@ internal class ItemQueryIndex : IArrayIndexExpression, IObjectIndexExpression
 		_expression = expression;
 	}
 
-	IEnumerable<int> IArrayIndexExpression.GetIndices(JsonElement array)
+	IEnumerable<int> IArrayIndexExpression.GetIndices(JsonArray array)
 	{
-		return array.EnumerateArray().Select((e, i) => (Evaluate(e), i))
+		return array.Select((e, i) => (Evaluate(e), i))
 			.Where(x => x.Item1)
 			.Select(x => x.i);
 	}
 
-	IEnumerable<string> IObjectIndexExpression.GetProperties(JsonElement obj)
+	IEnumerable<string> IObjectIndexExpression.GetProperties(JsonObject obj)
 	{
-		return obj.EnumerateObject().Select(p => (Evaluate(p.Value), p.Name))
+		return obj.Select(p => (Evaluate(p.Value), p.Key))
 			.Where(x => x.Item1)
-			.Select(x => x.Name);
+			.Select(x => x.Key);
 	}
 
-	private bool Evaluate(JsonElement item)
+	private bool Evaluate(JsonNode? item)
 	{
 		if (_expression.OutputType != QueryExpressionType.Boolean &&
 			_expression.OutputType != QueryExpressionType.InstanceDependent)
 			return false;
 
 		var result = _expression.Evaluate(item);
-		if (result.ValueKind != JsonValueKind.True &&
-			result.ValueKind != JsonValueKind.False)
-			return false;
-
-		return result.GetBoolean();
+		return result is JsonValue value && 
+		       value.TryGetValue(out bool b) && b;
 	}
 
 	internal static bool TryParse(ReadOnlySpan<char> span, ref int i, [NotNullWhen(true)] out IIndexExpression? index)

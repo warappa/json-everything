@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Text.Json;
+using System.Text.Json.Nodes;
 using NUnit.Framework;
 
 namespace Json.Path.Tests;
@@ -17,8 +18,8 @@ public class ReferenceResolutionTests
 				ProcessDataReferences = true,
 				DataReferenceDownload = async uri =>
 					uri.OriginalString == "http://example.com/11"
-						? JsonDocument.Parse("{ \"c\": { \"d\": \"Hello\" } }")
-						: null
+						? (true, JsonNode.Parse("{ \"c\": { \"d\": \"Hello\" } }"))
+						: (false, null)
 			}
 		};
 #pragma warning restore 1998
@@ -27,8 +28,8 @@ public class ReferenceResolutionTests
 		var path = JsonPath.Parse("$.a.b.c.d");
 		var results = path.Evaluate(instance.RootElement, options);
 
-		Assert.AreEqual(1, results.Matches.Count);
-		Assert.AreEqual("Hello", results.Matches[0].Value.GetString());
+		Assert.AreEqual(1, results.Matches!.Count);
+		Assert.AreEqual("Hello", results.Matches[0].Value!.GetValue<string>());
 	}
 
 	[Test]
@@ -49,6 +50,6 @@ public class ReferenceResolutionTests
 		var path = JsonPath.Parse("$.a.b.c.d");
 		var results = path.Evaluate(instance.RootElement, options);
 
-		Assert.AreEqual(0, results.Matches.Count);
+		Assert.AreEqual(0, results.Matches!.Count);
 	}
 }

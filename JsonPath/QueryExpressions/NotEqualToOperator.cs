@@ -1,4 +1,4 @@
-﻿using System.Text.Json;
+﻿using System.Text.Json.Nodes;
 using Json.More;
 
 namespace Json.Path.QueryExpressions;
@@ -15,7 +15,7 @@ internal class NotEqualToOperator : IQueryExpressionOperator
 		return QueryExpressionType.Boolean;
 	}
 
-	public JsonElementProxy Evaluate(QueryExpressionNode left, QueryExpressionNode right, JsonElement element)
+	public JsonNode? Evaluate(QueryExpressionNode left, QueryExpressionNode right, JsonNode? element)
 	{
 		return !left.Evaluate(element).IsEquivalentTo(right.Evaluate(element));
 	}

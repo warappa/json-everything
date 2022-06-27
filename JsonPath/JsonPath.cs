@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Text.Json;
+using System.Text.Json.Nodes;
 using System.Text.Json.Serialization;
+using Json.More;
 
 namespace Json.Path;
 
@@ -54,8 +56,8 @@ public class JsonPath
 		{
 			var node = span[i] switch
 			{
-				'$' => AddRootNode(ref i),
-				'@' => AddLocalRootNode(ref i),
+				'$' => AddRootSelector(ref i),
+				'@' => AddLocalRootSelector(ref i),
 				'.' => AddPropertyOrRecursive(span, ref i),
 				'[' => AddIndex(span, ref i),
 				_ => null
@@ -96,8 +98,8 @@ public class JsonPath
 		{
 			var node = span[i] switch
 			{
-				'$' => AddRootNode(ref i),
-				'@' => AddLocalRootNode(ref i),
+				'$' => AddRootSelector(ref i),
+				'@' => AddLocalRootSelector(ref i),
 				'.' => AddPropertyOrRecursive(span, ref i),
 				'[' => AddIndex(span, ref i),
 				_ => null
@@ -123,13 +125,13 @@ public class JsonPath
 		return true;
 	}
 
-	private static ISelector AddRootNode(ref int i)
+	private static ISelector AddRootSelector(ref int i)
 	{
 		i++;
 		return new RootNodeSelector();
 	}
 
-	private static ISelector AddLocalRootNode(ref int i)
+	private static ISelector AddLocalRootSelector(ref int i)
 	{
 		i++;
 		return new LocalNodeSelector();
@@ -237,12 +239,12 @@ public class JsonPath
 	}
 
 	/// <summary>
-	/// Evaluates the path against a JSON instance.
+	/// Evaluates the path against a JSON instance.	
 	/// </summary>
 	/// <param name="root">The root of the JSON instance.</param>
 	/// <param name="options">Evaluation options.</param>
 	/// <returns>The results of the evaluation.</returns>
-	public PathResult Evaluate(JsonElement root, PathEvaluationOptions? options = null)
+	public PathResult Evaluate(JsonNode? root, PathEvaluationOptions? options = null)
 	{
 		options ??= new PathEvaluationOptions();
 
@@ -272,28 +274,37 @@ public class JsonPath
 	}
 }
 
-/// <summary>
-/// JSON converter for <see cref="JsonPath"/>.
-/// </summary>
-public class JsonPathConverter : JsonConverter<JsonPath>
+internal class JsonPathConverter : JsonConverter<JsonPath>
 {
-	/// <summary>Reads and converts the JSON to type <see cref="JsonPath"/>.</summary>
-	/// <param name="reader">The reader.</param>
-	/// <param name="typeToConvert">The type to convert.</param>
-	/// <param name="options">An object that specifies serialization options to use.</param>
-	/// <returns>The converted value.</returns>
 	public override JsonPath Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
 	{
 		var text = reader.GetString()!;
 		return JsonPath.Parse(text);
 	}
 
-	/// <summary>Writes a specified value as JSON.</summary>
-	/// <param name="writer">The writer to write to.</param>
-	/// <param name="value">The value to convert to JSON.</param>
-	/// <param name="options">An object that specifies serialization options to use.</param>
 	public override void Write(Utf8JsonWriter writer, JsonPath value, JsonSerializerOptions options)
 	{
 		JsonSerializer.Serialize(writer, value.ToString(), options);
+	}
+}
+
+/// <summary>
+/// Provides extensions for <see cref="JsonPath"/>.
+/// </summary>
+public static class JsonPathExtensions
+{
+	/// <summary>
+	/// Evaluates the path against a JSON instance.	
+	/// </summary>
+	/// <param name="path">The path to evaluate.</param>
+	/// <param name="root">The root of the JSON instance.</param>
+	/// <param name="options">Evaluation options.</param>
+	/// <returns>The results of the evaluation.</returns>
+	/// <remarks>
+	/// Provided for convenience and backward compatibility.
+	/// </remarks>
+	public static PathResult Evaluate(this JsonPath path, JsonElement root, PathEvaluationOptions? options = null)
+	{
+		return path.Evaluate(root.AsNode(), options);
 	}
 }

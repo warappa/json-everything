@@ -1,5 +1,5 @@
 ﻿using System;
-using System.Text.Json;
+using System.Text.Json.Nodes;
 using System.Threading.Tasks;
 
 namespace Json.Path;
@@ -12,7 +12,7 @@ namespace Json.Path;
 /// </remarks>
 public class ExperimentalFeatures
 {
-	private Func<Uri, Task<JsonDocument?>>? _download;
+	private Func<Uri, Task<(bool, JsonNode?)>>? _download;
 
 	/// <summary>
 	/// Enables dereferencing of reference objects such as
@@ -26,7 +26,7 @@ public class ExperimentalFeatures
 	/// Gets or sets the document download mechanism for resolving URIs.  This
 	/// default is a simple, uncached download.
 	/// </summary>
-	public Func<Uri, Task<JsonDocument?>> DataReferenceDownload
+	public Func<Uri, Task<(bool, JsonNode?)>> DataReferenceDownload
 	{
 		get => _download ??= ReferenceHandler.DefaultDownload;
 		set => _download = value;

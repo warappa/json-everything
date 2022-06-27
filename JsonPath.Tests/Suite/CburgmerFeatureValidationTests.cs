@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Diagnostics.CodeAnalysis;
 using System.IO;
 using System.Linq;
 using System.Text.Json;
+using System.Text.Json.Nodes;
 using System.Text.RegularExpressions;
 using System.Threading;
 using System.Threading.Tasks;
@@ -20,10 +22,10 @@ namespace Json.Path.Tests.Suite;
 public class CburgmerFeatureValidationTests
 {
 	private const string _regressionResultsFile = @"../../../../ref-repos/json-path-comparison/regression_suite/regression_suite.yaml";
-	private static readonly Regex _idPattern = new Regex(@"  - id: (?<value>.*)");
-	private static readonly Regex _selectorPattern = new Regex(@"    selector: (?<value>.*)");
-	private static readonly Regex _documentPattern = new Regex(@"    document: (?<value>.*)");
-	private static readonly Regex _consensusPattern = new Regex(@"    consensus: (?<value>.*)");
+	private static readonly Regex _idPattern = new(@"  - id: (?<value>.*)");
+	private static readonly Regex _selectorPattern = new(@"    selector: (?<value>.*)");
+	private static readonly Regex _documentPattern = new(@"    document: (?<value>.*)");
+	private static readonly Regex _consensusPattern = new(@"    consensus: (?<value>.*)");
 	private static readonly string[] _notSupported =
 	{
 		// expect these to be out of spec soon
@@ -45,7 +47,7 @@ public class CburgmerFeatureValidationTests
 	{
 		get
 		{
-			static bool TryMatch(string line, Regex pattern, out string value)
+			static bool TryMatch(string line, Regex pattern, [NotNullWhen(true)] out string? value)
 			{
 				var match = pattern.Match(line);
 				if (!match.Success)
@@ -60,7 +62,7 @@ public class CburgmerFeatureValidationTests
 
 			// what I wouldn't give for a YAML parser...
 			var fileLines = File.ReadAllLines(_regressionResultsFile);
-			CburgmerTestCase currentTestCase = null;
+			CburgmerTestCase? currentTestCase = null;
 			foreach (var line in fileLines)
 			{
 				if (TryMatch(line, _idPattern, out var value))
@@ -71,15 +73,15 @@ public class CburgmerFeatureValidationTests
 				}
 				else if (TryMatch(line, _selectorPattern, out value))
 				{
-					currentTestCase.PathString = JsonDocument.Parse(value).RootElement.GetString();
+					currentTestCase!.PathString = JsonNode.Parse(value)!.GetValue<string>();
 				}
 				else if (TryMatch(line, _documentPattern, out value))
 				{
-					currentTestCase.JsonString = value;
+					currentTestCase!.JsonString = value;
 				}
 				else if (TryMatch(line, _consensusPattern, out value))
 				{
-					currentTestCase.Consensus = value;
+					currentTestCase!.Consensus = value;
 				}
 			}
 		}
@@ -96,7 +98,7 @@ public class CburgmerFeatureValidationTests
 		Console.WriteLine(testCase);
 		Console.WriteLine();
 
-		PathResult actual = null;
+		PathResult? actual = null;
 
 		var time = Debugger.IsAttached ? int.MaxValue : 100;
 		using var cts = new CancellationTokenSource(time);
@@ -111,7 +113,7 @@ public class CburgmerFeatureValidationTests
 			Assert.Fail($"Could not parse path: {testCase.PathString}");
 		}
 
-		Console.WriteLine($"Actual (values): {JsonSerializer.Serialize(actual.Matches.Select(x => x.Value))}");
+		Console.WriteLine($"Actual (values): {JsonSerializer.Serialize(actual!.Matches!.Select(x => x.Value))}");
 		Console.WriteLine();
 		Console.WriteLine($"Actual: {JsonSerializer.Serialize(actual)}");
 		if (testCase.Consensus == null)
@@ -119,18 +121,18 @@ public class CburgmerFeatureValidationTests
 		else
 		{
 			if (testCase.Consensus == "NOT_SUPPORTED") return;
-			var expected = JsonDocument.Parse(testCase.Consensus).RootElement;
-			Assert.IsTrue(expected.EnumerateArray().All(v => actual.Matches.Any(m => JsonElementEqualityComparer.Instance.Equals(v, m.Value))));
+			var expected = JsonNode.Parse(testCase.Consensus);
+			Assert.IsTrue(expected!.AsArray().All(v => actual.Matches!.Any(m => JsonNodeEqualityComparer.Instance.Equals(v, m.Value))));
 		}
 	}
 
-	private static PathResult Evaluate(string jsonString, string pathString)
+	private static PathResult? Evaluate(string jsonString, string pathString)
 	{
 		var o = JsonDocument.Parse(jsonString).RootElement;
 		var selector = pathString;
-		if (!JsonPath.TryParse(selector, out var path))
-			return null;
-		var results = path.Evaluate(o);
+		if (!JsonPath.TryParse(selector, out var path)) return null;
+
+		var results = path!.Evaluate(o);
 
 		return results;
 	}

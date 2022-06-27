@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text.Json;
+using System.Text.Json.Nodes;
 
 namespace Json.Path;
 
@@ -14,22 +14,22 @@ internal class RecursiveDescentSelector : SelectorBase
 
 	private static IEnumerable<PathMatch> GetChildren(PathMatch match)
 	{
-		switch (match.Value.ValueKind)
+		switch (match.Value)
 		{
-			case JsonValueKind.Object:
+			case JsonObject obj:
 				yield return match;
-				foreach (var prop in match.Value.EnumerateObject())
+				foreach (var prop in obj)
 				{
-					var newMatch = new PathMatch(prop.Value, match.Location.AddSelector(new IndexSelector(new[] { (PropertyNameIndex)prop.Name })));
+					var newMatch = new PathMatch(prop.Value, match.Location.AddSelector(new IndexSelector(new[] { (PropertyNameIndex)prop.Key })));
 					foreach (var child in GetChildren(newMatch))
 					{
 						yield return child;
 					}
 				}
 				break;
-			case JsonValueKind.Array:
+			case JsonArray array:
 				yield return match;
-				foreach (var (item, index) in match.Value.EnumerateArray().Select((item, i) => (item, i)))
+				foreach (var (item, index) in array.Select((item, i) => (item, i)))
 				{
 					var newMatch = new PathMatch(item, match.Location.AddSelector(new IndexSelector(new[] { (SimpleIndex)index })));
 					foreach (var child in GetChildren(newMatch))
@@ -38,14 +38,10 @@ internal class RecursiveDescentSelector : SelectorBase
 					}
 				}
 				break;
-			case JsonValueKind.String:
-			case JsonValueKind.Number:
-			case JsonValueKind.True:
-			case JsonValueKind.False:
-			case JsonValueKind.Null:
+			case null:
+			case JsonValue:
 				yield return match;
 				break;
-			case JsonValueKind.Undefined:
 			default:
 				throw new ArgumentOutOfRangeException();
 		}

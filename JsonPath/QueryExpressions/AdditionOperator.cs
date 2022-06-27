@@ -1,4 +1,4 @@
-﻿using System.Text.Json;
+﻿using System.Text.Json.Nodes;
 using Json.More;
 
 namespace Json.Path.QueryExpressions;
@@ -18,23 +18,25 @@ internal class AdditionOperator : IQueryExpressionOperator
 		};
 	}
 
-	public JsonElementProxy Evaluate(QueryExpressionNode left, QueryExpressionNode right, JsonElement element)
+	public JsonNode? Evaluate(QueryExpressionNode left, QueryExpressionNode right, JsonNode? element)
 	{
-		var lElement = left.Evaluate(element);
-		var rElement = right.Evaluate(element);
-		switch (left.OutputType)
+		var lValue = left.Evaluate(element) as JsonValue;
+		if (lValue is null) return null;
+		var rValue = right.Evaluate(element) as JsonValue;
+		if (rValue is null) return null;
+
+		if (lValue.IsNumber())
 		{
-			case QueryExpressionType.Number:
-				if (lElement.ValueKind != JsonValueKind.Number ||
-					rElement.ValueKind != JsonValueKind.Number) return default;
-				return lElement.GetDecimal() + rElement.GetDecimal();
-			case QueryExpressionType.String:
-				if (lElement.ValueKind != JsonValueKind.String ||
-					rElement.ValueKind != JsonValueKind.String) return default;
-				return string.Concat(lElement.GetString(), rElement.GetString());
-			default:
-				return default;
+			var lNumber = lValue.GetNumber();
+			var rNumber = rValue.GetNumber();
+			return lNumber is null || rNumber is null
+				? null
+				: lNumber + rNumber;
 		}
+
+		return !lValue.TryGetValue(out string? lString) || !rValue.TryGetValue(out string? rString)
+			? null
+			: string.Concat(lString, rString);
 	}
 
 	public string ToString(QueryExpressionNode left, QueryExpressionNode right)

@@ -1,5 +1,4 @@
-﻿using System.Text.Json;
-using Json.More;
+﻿using System.Text.Json.Nodes;
 
 namespace Json.Path.QueryExpressions;
 
@@ -8,6 +7,6 @@ internal interface IQueryExpressionOperator
 	int OrderOfOperation { get; }
 
 	QueryExpressionType GetOutputType(QueryExpressionNode left, QueryExpressionNode right);
-	JsonElementProxy Evaluate(QueryExpressionNode left, QueryExpressionNode right, JsonElement element);
+	JsonNode? Evaluate(QueryExpressionNode left, QueryExpressionNode right, JsonNode? element);
 	string ToString(QueryExpressionNode left, QueryExpressionNode right);
 }

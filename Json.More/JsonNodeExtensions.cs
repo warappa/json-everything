@@ -138,7 +138,7 @@ public static class JsonNodeExtensions
 			return e.GetDecimal();
 		}
 
-		var number = GetInteger(value);
+		var number = GetTypedInteger(value);
 		if (number != null) return number;
 
 		if (value.TryGetValue(out float f)) return (decimal)f;
@@ -155,13 +155,29 @@ public static class JsonNodeExtensions
 	/// <returns>Gets the underlying numeric value if it's an integer, or null if the node represented a non-integer value.</returns>
 	public static long? GetInteger(this JsonValue value)
 	{
+		decimal dc;
 		if (value.TryGetValue(out JsonElement e))
 		{
 			if (e.ValueKind != JsonValueKind.Number) return null;
-			var d = e.GetDecimal();
-			if (d == Math.Floor(d)) return (long)d;
+			dc = e.GetDecimal();
+			if (dc == Math.Floor(dc)) return (long)dc;
 			return null;
 		}
+
+		var number = GetTypedInteger(value);
+		if (number != null) return number;
+
+		// ReSharper disable CompareOfFloatsByEqualityOperator
+		if (value.TryGetValue(out float f) && f == Math.Floor(f)) return (long)f;
+		if (value.TryGetValue(out double d) && d == Math.Floor(d)) return (long)d;
+		// ReSharper restore CompareOfFloatsByEqualityOperator
+		if (value.TryGetValue(out dc) && dc == Math.Floor(dc)) return (long) dc;
+
+		return null;
+	}
+
+	private static long? GetTypedInteger(this JsonValue value)
+	{
 		if (value.TryGetValue(out byte b)) return b;
 		if (value.TryGetValue(out short s)) return s;
 		if (value.TryGetValue(out ushort us)) return us;
@@ -172,6 +188,18 @@ public static class JsonNodeExtensions
 		if (value.TryGetValue(out ulong ul)) return (long)ul;
 
 		return null;
+	}
+
+	/// <summary>
+	/// Gets whether the underlying data is a number.
+	/// </summary>
+	/// <param name="value">The value.</param>
+	/// <returns>`true` if the underlying data is a numeric type or
+	/// a <see cref="JsonElement"/> representing a number; `false` otherwise.</returns>
+	public static bool IsNumber(this JsonValue value)
+	{
+		var obj = value.GetValue<object>();
+		return obj.GetType().IsNumber() || obj is JsonElement { ValueKind: JsonValueKind.Number };
 	}
 
 	/// <summary>

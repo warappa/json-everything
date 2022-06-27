@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
-using System.Text.Json;
+using System.Text.Json.Nodes;
 using System.Text.RegularExpressions;
 
 namespace Json.Path;
@@ -17,7 +17,7 @@ internal class PropertyNameIndex : IObjectIndexExpression
 		_quoteChar = quoteChar;
 	}
 
-	IEnumerable<string> IObjectIndexExpression.GetProperties(JsonElement obj)
+	IEnumerable<string> IObjectIndexExpression.GetProperties(JsonObject obj)
 	{
 		return new[] { _name };
 	}
@@ -59,8 +59,8 @@ internal class PropertyNameIndex : IObjectIndexExpression
 		{
 			if (start == '\'')
 				key = key.Replace("\\'", "'").Replace("\"", "\\\"");
-			using var doc = JsonDocument.Parse($"\"{key}\"");
-			key = doc.RootElement.GetString()!;
+			var doc = JsonNode.Parse($"\"{key}\"");
+			key = doc!.GetValue<string>();
 		}
 		catch
 		{

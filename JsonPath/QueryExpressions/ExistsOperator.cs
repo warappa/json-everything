@@ -1,5 +1,4 @@
-﻿using System.Text.Json;
-using Json.More;
+﻿using System.Text.Json.Nodes;
 
 namespace Json.Path.QueryExpressions;
 
@@ -12,9 +11,9 @@ internal class ExistsOperator : IQueryExpressionOperator
 		return QueryExpressionType.Boolean;
 	}
 
-	public JsonElementProxy Evaluate(QueryExpressionNode left, QueryExpressionNode right, JsonElement element)
+	public JsonNode? Evaluate(QueryExpressionNode left, QueryExpressionNode right, JsonNode? element)
 	{
-		return left.Evaluate(element).ValueKind != JsonValueKind.Undefined;
+		return left.Evaluate(element) != null;
 	}
 
 	public string ToString(QueryExpressionNode left, QueryExpressionNode right)

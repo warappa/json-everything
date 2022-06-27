@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Text.Json;
+﻿using System.Text.Json.Nodes;
 using NUnit.Framework;
 
 namespace Json.Path.Tests
@@ -12,7 +9,7 @@ namespace Json.Path.Tests
 		[Test]
 		public void Question71692141()
 		{
-			var data = JsonDocument.Parse(@"{
+			var data = JsonNode.Parse(@"{
     ""type"": ""object"",
     ""properties"": {
         ""period"": {
@@ -45,9 +42,9 @@ namespace Json.Path.Tests
 }");
 			var path = JsonPath.Parse("$..['x-updateIndicatorProperties']");
 
-			var results = path.Evaluate(data.RootElement);
+			var results = path.Evaluate(data);
 
-			Assert.AreEqual(2, results.Matches.Count);
+			Assert.AreEqual(2, results.Matches!.Count);
 		}
 	}
 }

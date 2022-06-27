@@ -1,3 +1,7 @@
+# [1.6.1](https://github.com/gregsdennis/json-everything/pull/???)
+
+Fixed `JsonValue.GetInteger()` extension to properly consider underlying floating point types.
+
 # [1.6.0](https://github.com/gregsdennis/json-everything/pull/280)
 
 Added supporting functionality for `JsonNode`.

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Diagnostics.CodeAnalysis;
 using System.Text.Json;
+using System.Text.Json.Nodes;
 using Json.More;
 
 namespace Json.Path.QueryExpressions;
@@ -11,15 +12,15 @@ internal class QueryExpressionNode
 	private readonly QueryExpressionNode? _left;
 	private QueryExpressionNode? _right;
 	private QueryExpressionType? _outputType;
-	private JsonElement? _value;
+	private JsonNode? _value;
 
 	public IQueryExpressionOperator? Operator { get; }
 
 	public QueryExpressionType OutputType => _outputType ??= GetOutputType();
 
-	public QueryExpressionNode(JsonElement value)
+	public QueryExpressionNode(JsonNode? value)
 	{
-		_value = value;
+		_value = value ?? JsonNull.SignalNode;
 	}
 
 	public QueryExpressionNode(JsonPath path)
@@ -35,9 +36,9 @@ internal class QueryExpressionNode
 		_right = right;
 	}
 
-	public JsonElement Evaluate(JsonElement element)
+	public JsonNode? Evaluate(JsonNode? element)
 	{
-		if (_value.HasValue) return _value.Value;
+		if (_value != null) return _value == JsonNull.SignalNode ? null : _value;
 
 		if (_path != null)
 		{
@@ -45,13 +46,13 @@ internal class QueryExpressionNode
 			// don't set _value; need to always eval
 			return result.Matches?.Count == 1
 				? result.Matches[0].Value
-				: default;
+				: null;
 		}
 
-		if (OutputType == QueryExpressionType.Invalid) return default;
+		if (OutputType == QueryExpressionType.Invalid) return null;
 
 		var value = Operator!.Evaluate(_left!, _right!, element);
-		if (OutputType != QueryExpressionType.InstanceDependent)
+		if (OutputType != QueryExpressionType.InstanceDependent) 
 			_value = value;
 		return value;
 	}
@@ -81,7 +82,7 @@ internal class QueryExpressionNode
 			return true;
 		}
 
-		if (span.TryParseJsonElement(ref i, out var element))
+		if (span.TryParseJsonNode(ref i, out var element))
 		{
 			node = new QueryExpressionNode(element);
 			return true;
@@ -91,7 +92,7 @@ internal class QueryExpressionNode
 		// but I don't know how to parse that from a string with trailing content
 		if (span.TryGetInt(ref i, out var value))
 		{
-			node = new QueryExpressionNode(value.AsJsonElement());
+			node = new QueryExpressionNode(value);
 			return true;
 		}
 
@@ -101,7 +102,7 @@ internal class QueryExpressionNode
 
 	private QueryExpressionType GetOutputType()
 	{
-		if (_value.HasValue) return GetValueType();
+		if (_value != null) return GetValueType(_value);
 		if (_path != null) return QueryExpressionType.InstanceDependent;
 
 		if (_left?.OutputType == QueryExpressionType.Invalid ||
@@ -113,15 +114,31 @@ internal class QueryExpressionNode
 			_right?.OutputType == QueryExpressionType.InstanceDependent)
 			return QueryExpressionType.InstanceDependent;
 
-		return Operator?.GetOutputType(_left!, _right!) ?? GetValueType();
+		return Operator?.GetOutputType(_left!, _right!) ?? GetValueType(_value);
 	}
 
-	private QueryExpressionType GetValueType()
+	private static QueryExpressionType GetValueType(JsonNode? node)
 	{
-		// ReSharper disable once PossibleInvalidOperationException
-		return _value?.ValueKind switch
+		if (node is null) return QueryExpressionType.Null;
+		if (node is JsonArray) return QueryExpressionType.Array;
+		if (node is JsonObject) return QueryExpressionType.Object;
+		if (node is JsonValue value)
 		{
-			JsonValueKind.Undefined => QueryExpressionType.Invalid,
+			var obj = value.GetValue<object>();
+			if (obj is JsonNull) return QueryExpressionType.Null;
+			if (obj is JsonElement element) return GetElementValueType(element);
+			var objType = obj.GetType();
+			if (objType.IsNumber()) return QueryExpressionType.Number;
+			if (obj is string) return QueryExpressionType.String;
+			if (obj is bool) return QueryExpressionType.Boolean;
+		}
+
+		throw new ArgumentOutOfRangeException(nameof(node));
+	}
+
+	private static QueryExpressionType GetElementValueType(JsonElement element) =>
+		element.ValueKind switch
+		{
 			JsonValueKind.Object => QueryExpressionType.Object,
 			JsonValueKind.Array => QueryExpressionType.Array,
 			JsonValueKind.String => QueryExpressionType.String,
@@ -129,12 +146,11 @@ internal class QueryExpressionNode
 			JsonValueKind.True => QueryExpressionType.Boolean,
 			JsonValueKind.False => QueryExpressionType.Boolean,
 			JsonValueKind.Null => QueryExpressionType.Null,
-			_ => throw new ArgumentOutOfRangeException()
+			_ => throw new ArgumentOutOfRangeException(nameof(element.ValueKind), element.ValueKind, null)
 		};
-	}
 
 	public override string ToString()
 	{
-		return Operator?.ToString(_left!, _right!) ?? _value?.ToJsonString() ?? _path!.ToString();
+		return Operator?.ToString(_left!, _right!) ?? _value?.AsJsonString() ?? _path!.ToString();
 	}
 }
