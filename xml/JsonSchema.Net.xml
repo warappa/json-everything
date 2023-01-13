@@ -9,9 +9,14 @@
             Handles `additionalItems`.
             </summary>
         </member>
+        <member name="F:Json.Schema.AdditionalItemsKeyword.Name">
+            <summary>
+            The JSON name of the keyword.
+            </summary>
+        </member>
         <member name="P:Json.Schema.AdditionalItemsKeyword.Schema">
             <summary>
-            The schema by which to validation additional items.
+            The schema by which to evaluate additional items.
             </summary>
         </member>
         <member name="M:Json.Schema.AdditionalItemsKeyword.#ctor(Json.Schema.JsonSchema)">
@@ -20,11 +25,11 @@
             </summary>
             <param name="value">The keyword's schema.</param>
         </member>
-        <member name="M:Json.Schema.AdditionalItemsKeyword.Validate(Json.Schema.ValidationContext)">
+        <member name="M:Json.Schema.AdditionalItemsKeyword.Evaluate(Json.Schema.EvaluationContext)">
             <summary>
-            Provides validation for the keyword.
+            Performs evaluation for the keyword.
             </summary>
-            <param name="context">Contextual details for the validation process.</param>
+            <param name="context">Contextual details for the evaluation process.</param>
         </member>
         <member name="M:Json.Schema.AdditionalItemsKeyword.Equals(Json.Schema.AdditionalItemsKeyword)">
             <summary>Indicates whether the current object is equal to another object of the same type.</summary>
@@ -45,9 +50,14 @@
             Handles `additionalProperties`.
             </summary>
         </member>
+        <member name="F:Json.Schema.AdditionalPropertiesKeyword.Name">
+            <summary>
+            The JSON name of the keyword.
+            </summary>
+        </member>
         <member name="P:Json.Schema.AdditionalPropertiesKeyword.Schema">
             <summary>
-            The schema by which to validation additional properties.
+            The schema by which to evaluate additional properties.
             </summary>
         </member>
         <member name="M:Json.Schema.AdditionalPropertiesKeyword.#ctor(Json.Schema.JsonSchema)">
@@ -56,11 +66,11 @@
             </summary>
             <param name="value">The keyword's schema.</param>
         </member>
-        <member name="M:Json.Schema.AdditionalPropertiesKeyword.Validate(Json.Schema.ValidationContext)">
+        <member name="M:Json.Schema.AdditionalPropertiesKeyword.Evaluate(Json.Schema.EvaluationContext)">
             <summary>
-            Provides validation for the keyword.
+            Performs evaluation for the keyword.
             </summary>
-            <param name="context">Contextual details for the validation process.</param>
+            <param name="context">Contextual details for the evaluation process.</param>
         </member>
         <member name="M:Json.Schema.AdditionalPropertiesKeyword.Equals(Json.Schema.AdditionalPropertiesKeyword)">
             <summary>Indicates whether the current object is equal to another object of the same type.</summary>
@@ -81,6 +91,11 @@
             Handles `allOf`.
             </summary>
         </member>
+        <member name="F:Json.Schema.AllOfKeyword.Name">
+            <summary>
+            The JSON name of the keyword.
+            </summary>
+        </member>
         <member name="P:Json.Schema.AllOfKeyword.Schemas">
             <summary>
             The keywords schema collection.
@@ -98,11 +113,11 @@
             </summary>
             <param name="values">The set of schemas.</param>
         </member>
-        <member name="M:Json.Schema.AllOfKeyword.Validate(Json.Schema.ValidationContext)">
+        <member name="M:Json.Schema.AllOfKeyword.Evaluate(Json.Schema.EvaluationContext)">
             <summary>
-            Provides validation for the keyword.
+            Performs evaluation for the keyword.
             </summary>
-            <param name="context">Contextual details for the validation process.</param>
+            <param name="context">Contextual details for the evaluation process.</param>
         </member>
         <member name="M:Json.Schema.AllOfKeyword.Equals(Json.Schema.AllOfKeyword)">
             <summary>Indicates whether the current object is equal to another object of the same type.</summary>
@@ -123,6 +138,11 @@
             Handles `$anchor`.
             </summary>
         </member>
+        <member name="F:Json.Schema.AnchorKeyword.Name">
+            <summary>
+            The JSON name of the keyword.
+            </summary>
+        </member>
         <member name="P:Json.Schema.AnchorKeyword.Anchor">
             <summary>
             The value of the anchor.
@@ -134,11 +154,11 @@
             </summary>
             <param name="anchor">The anchor value.</param>
         </member>
-        <member name="M:Json.Schema.AnchorKeyword.Validate(Json.Schema.ValidationContext)">
+        <member name="M:Json.Schema.AnchorKeyword.Evaluate(Json.Schema.EvaluationContext)">
             <summary>
-            Provides validation for the keyword.
+            Performs evaluation for the keyword.
             </summary>
-            <param name="context">Contextual details for the validation process.</param>
+            <param name="context">Contextual details for the evaluation process.</param>
         </member>
         <member name="M:Json.Schema.AnchorKeyword.Equals(Json.Schema.AnchorKeyword)">
             <summary>Indicates whether the current object is equal to another object of the same type.</summary>
@@ -154,37 +174,14 @@
             <summary>Serves as the default hash function.</summary>
             <returns>A hash code for the current object.</returns>
         </member>
-        <member name="T:Json.Schema.Annotation">
-            <summary>
-            Holder for an annotation value.
-            </summary>
-        </member>
-        <member name="P:Json.Schema.Annotation.Owner">
-            <summary>
-            The keyword that created the annotation (acts as a key for lookup).
-            </summary>
-        </member>
-        <member name="P:Json.Schema.Annotation.Value">
-            <summary>
-            The annotation value.
-            </summary>
-        </member>
-        <member name="P:Json.Schema.Annotation.Source">
-            <summary>
-            The pointer to the keyword that created the annotation.
-            </summary>
-        </member>
-        <member name="M:Json.Schema.Annotation.#ctor(System.String,System.Object,Json.Pointer.JsonPointer@)">
-            <summary>
-            Creates a new <see cref="T:Json.Schema.Annotation"/>.
-            </summary>
-            <param name="owner">The keyword that created the annotation (acts as a key for lookup).</param>
-            <param name="value">The annotation value.</param>
-            <param name="source">The pointer to the keyword that created the annotation.</param>
-        </member>
         <member name="T:Json.Schema.AnyOfKeyword">
             <summary>
             Handles `anyOf`.
+            </summary>
+        </member>
+        <member name="F:Json.Schema.AnyOfKeyword.Name">
+            <summary>
+            The JSON name of the keyword.
             </summary>
         </member>
         <member name="P:Json.Schema.AnyOfKeyword.Schemas">
@@ -204,11 +201,11 @@
             </summary>
             <param name="values">The set of schemas.</param>
         </member>
-        <member name="M:Json.Schema.AnyOfKeyword.Validate(Json.Schema.ValidationContext)">
+        <member name="M:Json.Schema.AnyOfKeyword.Evaluate(Json.Schema.EvaluationContext)">
             <summary>
-            Provides validation for the keyword.
+            Performs evaluation for the keyword.
             </summary>
-            <param name="context">Contextual details for the validation process.</param>
+            <param name="context">Contextual details for the evaluation process.</param>
         </member>
         <member name="M:Json.Schema.AnyOfKeyword.Equals(Json.Schema.AnyOfKeyword)">
             <summary>Indicates whether the current object is equal to another object of the same type.</summary>
@@ -224,18 +221,14 @@
             <summary>Serves as the default hash function.</summary>
             <returns>A hash code for the current object.</returns>
         </member>
-        <member name="T:Json.Schema.ApplicatorAttribute">
-            <summary>
-            Indicates that the keyword is classified as an applicator.
-            </summary>
-            <remarks>
-            Apply this attribute to your schema keyword if it contains subschemas
-            that also provide validations.
-            </remarks>
-        </member>
         <member name="T:Json.Schema.CommentKeyword">
             <summary>
             Handles `$comment`.
+            </summary>
+        </member>
+        <member name="F:Json.Schema.CommentKeyword.Name">
+            <summary>
+            The JSON name of the keyword.
             </summary>
         </member>
         <member name="P:Json.Schema.CommentKeyword.Value">
@@ -249,11 +242,11 @@
             </summary>
             <param name="value">The comment value.</param>
         </member>
-        <member name="M:Json.Schema.CommentKeyword.Validate(Json.Schema.ValidationContext)">
+        <member name="M:Json.Schema.CommentKeyword.Evaluate(Json.Schema.EvaluationContext)">
             <summary>
-            Provides validation for the keyword.
+            Performs evaluation for the keyword.
             </summary>
-            <param name="context">Contextual details for the validation process.</param>
+            <param name="context">Contextual details for the evaluation process.</param>
         </member>
         <member name="M:Json.Schema.CommentKeyword.Equals(Json.Schema.CommentKeyword)">
             <summary>Indicates whether the current object is equal to another object of the same type.</summary>
@@ -274,6 +267,11 @@
             Handles `const`.
             </summary>
         </member>
+        <member name="F:Json.Schema.ConstKeyword.Name">
+            <summary>
+            The JSON name of the keyword.
+            </summary>
+        </member>
         <member name="P:Json.Schema.ConstKeyword.Value">
             <summary>
             The constant value.
@@ -285,11 +283,11 @@
             </summary>
             <param name="value">The constant value.</param>
         </member>
-        <member name="M:Json.Schema.ConstKeyword.Validate(Json.Schema.ValidationContext)">
+        <member name="M:Json.Schema.ConstKeyword.Evaluate(Json.Schema.EvaluationContext)">
             <summary>
-            Provides validation for the keyword.
+            Performs evaluation for the keyword.
             </summary>
-            <param name="context">Contextual details for the validation process.</param>
+            <param name="context">Contextual details for the evaluation process.</param>
         </member>
         <member name="M:Json.Schema.ConstKeyword.Equals(Json.Schema.ConstKeyword)">
             <summary>Indicates whether the current object is equal to another object of the same type.</summary>
@@ -325,11 +323,25 @@
               - [[value]] - the value in the schema
             </remarks>
         </member>
-        <member name="P:Json.Schema.ErrorMessages.Contains">
+        <member name="P:Json.Schema.ErrorMessages.ContainsTooFew">
             <summary>
-            Gets or sets the error message for <see cref="T:Json.Schema.ContainsKeyword"/>.
+            Gets or sets the error message for <see cref="T:Json.Schema.ContainsKeyword"/> when there are too few matching items.
             </summary>
-            <remarks>No tokens are supported.</remarks>
+            <remarks>
+            Available tokens are:
+              - [[received]] - the number of matching items provided in the JSON instance
+              - [[minimum]] - the lower limit specified in the schema
+            </remarks>
+        </member>
+        <member name="P:Json.Schema.ErrorMessages.ContainsTooMany">
+            <summary>
+            Gets or sets the error message for <see cref="T:Json.Schema.ContainsKeyword"/> when there are too many matching items.
+            </summary>
+            <remarks>
+            Available tokens are:
+              - [[received]] - the number of matching items provided in the JSON instance
+              - [[maximum]] - the upper limit specified in the schema
+            </remarks>
         </member>
         <member name="P:Json.Schema.ErrorMessages.Dependencies">
             <summary>
@@ -449,16 +461,6 @@
             </summary>
             <remarks>No tokens are supported.</remarks>
         </member>
-        <member name="P:Json.Schema.ErrorMessages.MaxContains">
-            <summary>
-            Gets or sets the error message for <see cref="T:Json.Schema.MaxContainsKeyword"/>.
-            </summary>
-            <remarks>
-            Available tokens are:
-              - [[received]] - the number of matching items provided in the JSON instance
-              - [[limit]] - the upper limit specified in the schema
-            </remarks>
-        </member>
         <member name="P:Json.Schema.ErrorMessages.Maximum">
             <summary>
             Gets or sets the error message for <see cref="T:Json.Schema.MinimumKeyword"/>.
@@ -497,16 +499,6 @@
             Available tokens are:
               - [[received]] - the number of properties provided in the JSON instance
               - [[limit]] - the upper limit specified in the schema
-            </remarks>
-        </member>
-        <member name="P:Json.Schema.ErrorMessages.MinContains">
-            <summary>
-            Gets or sets the error message for <see cref="T:Json.Schema.MinContainsKeyword"/>.
-            </summary>
-            <remarks>
-            Available tokens are:
-              - [[received]] - the number of matching items provided in the JSON instance
-              - [[limit]] - the lower limit specified in the schema
             </remarks>
         </member>
         <member name="P:Json.Schema.ErrorMessages.Minimum">
@@ -591,39 +583,6 @@
              could be quite large.  They are provided to support custom messages.
              </remarks>
         </member>
-        <member name="P:Json.Schema.ErrorMessages.RecursiveRef">
-            <summary>
-            Gets or sets the error message for when a recursive reference is encountered.
-            </summary>
-            <remarks>No tokens are supported.</remarks>
-        </member>
-        <member name="P:Json.Schema.ErrorMessages.BaseUriResolution">
-            <summary>
-            Gets or sets the error message for when a base URI cannot be resolved.
-            </summary>
-            <remarks>
-            Available tokens are:
-              - [[uri]] - the base URI to resolve
-            </remarks>
-        </member>
-        <member name="P:Json.Schema.ErrorMessages.PointerParse">
-            <summary>
-            Gets or sets the error message for when a URI fragment cannot be parsed into a JSON Pointer.
-            </summary>
-            <remarks>
-            Available tokens are:
-              - [[fragment]] - the pointer fragment
-            </remarks>
-        </member>
-        <member name="P:Json.Schema.ErrorMessages.RefResolution">
-            <summary>
-            Gets or sets the error message for when a reference fails to resolve.
-            </summary>
-            <remarks>
-            Available tokens are:
-              - [[uri]] - the reference to resolve
-            </remarks>
-        </member>
         <member name="P:Json.Schema.ErrorMessages.Required">
             <summary>
             Gets or sets the error message for <see cref="T:Json.Schema.RequiredKeyword"/>.
@@ -631,15 +590,6 @@
             <remarks>
             Available tokens are:
               - [[missing]] - the properties missing from the JSON instance
-            </remarks>
-        </member>
-        <member name="P:Json.Schema.ErrorMessages.MetaSchemaResolution">
-            <summary>
-            Gets or sets the error message for when the meta-schema cannot be resolved.
-            </summary>
-            <remarks>
-            Available tokens are:
-              - [[uri]] - the URI of the meta-schema
             </remarks>
         </member>
         <member name="P:Json.Schema.ErrorMessages.MetaSchemaValidation">
@@ -685,6 +635,11 @@
             Handles `contains`.
             </summary>
         </member>
+        <member name="F:Json.Schema.ContainsKeyword.Name">
+            <summary>
+            The JSON name of the keyword.
+            </summary>
+        </member>
         <member name="P:Json.Schema.ContainsKeyword.Schema">
             <summary>
             The schema to match.
@@ -696,11 +651,11 @@
             </summary>
             <param name="value">The schema to match.</param>
         </member>
-        <member name="M:Json.Schema.ContainsKeyword.Validate(Json.Schema.ValidationContext)">
+        <member name="M:Json.Schema.ContainsKeyword.Evaluate(Json.Schema.EvaluationContext)">
             <summary>
-            Provides validation for the keyword.
+            Performs evaluation for the keyword.
             </summary>
-            <param name="context">Contextual details for the validation process.</param>
+            <param name="context">Contextual details for the evaluation process.</param>
         </member>
         <member name="M:Json.Schema.ContainsKeyword.Equals(Json.Schema.ContainsKeyword)">
             <summary>Indicates whether the current object is equal to another object of the same type.</summary>
@@ -721,6 +676,11 @@
             Handles `contentMediaEncoding`.
             </summary>
         </member>
+        <member name="F:Json.Schema.ContentEncodingKeyword.Name">
+            <summary>
+            The JSON name of the keyword.
+            </summary>
+        </member>
         <member name="P:Json.Schema.ContentEncodingKeyword.Value">
             <summary>
             The encoding value.
@@ -732,11 +692,11 @@
             </summary>
             <param name="value">The encoding value.</param>
         </member>
-        <member name="M:Json.Schema.ContentEncodingKeyword.Validate(Json.Schema.ValidationContext)">
+        <member name="M:Json.Schema.ContentEncodingKeyword.Evaluate(Json.Schema.EvaluationContext)">
             <summary>
-            Provides validation for the keyword.
+            Performs evaluation for the keyword.
             </summary>
-            <param name="context">Contextual details for the validation process.</param>
+            <param name="context">Contextual details for the evaluation process.</param>
         </member>
         <member name="M:Json.Schema.ContentEncodingKeyword.Equals(Json.Schema.ContentEncodingKeyword)">
             <summary>Indicates whether the current object is equal to another object of the same type.</summary>
@@ -757,6 +717,11 @@
             Handles `contentMediaType`.
             </summary>
         </member>
+        <member name="F:Json.Schema.ContentMediaTypeKeyword.Name">
+            <summary>
+            The JSON name of the keyword.
+            </summary>
+        </member>
         <member name="P:Json.Schema.ContentMediaTypeKeyword.Value">
             <summary>
             The media type.
@@ -768,11 +733,11 @@
             </summary>
             <param name="value">The media type.</param>
         </member>
-        <member name="M:Json.Schema.ContentMediaTypeKeyword.Validate(Json.Schema.ValidationContext)">
+        <member name="M:Json.Schema.ContentMediaTypeKeyword.Evaluate(Json.Schema.EvaluationContext)">
             <summary>
-            Provides validation for the keyword.
+            Performs evaluation for the keyword.
             </summary>
-            <param name="context">Contextual details for the validation process.</param>
+            <param name="context">Contextual details for the evaluation process.</param>
         </member>
         <member name="M:Json.Schema.ContentMediaTypeKeyword.Equals(Json.Schema.ContentMediaTypeKeyword)">
             <summary>Indicates whether the current object is equal to another object of the same type.</summary>
@@ -793,22 +758,27 @@
             Handles `contentSchema`.
             </summary>
         </member>
+        <member name="F:Json.Schema.ContentSchemaKeyword.Name">
+            <summary>
+            The JSON name of the keyword.
+            </summary>
+        </member>
         <member name="P:Json.Schema.ContentSchemaKeyword.Schema">
             <summary>
-            The schema against which to validate the content.
+            The schema against which to evaluate the content.
             </summary>
         </member>
         <member name="M:Json.Schema.ContentSchemaKeyword.#ctor(Json.Schema.JsonSchema)">
             <summary>
             Creates a new <see cref="T:Json.Schema.ContentSchemaKeyword"/>.
             </summary>
-            <param name="value">The schema against which to validate the content.</param>
+            <param name="value">The schema against which to evaluate the content.</param>
         </member>
-        <member name="M:Json.Schema.ContentSchemaKeyword.Validate(Json.Schema.ValidationContext)">
+        <member name="M:Json.Schema.ContentSchemaKeyword.Evaluate(Json.Schema.EvaluationContext)">
             <summary>
-            Provides validation for the keyword.
+            Performs evaluation for the keyword.
             </summary>
-            <param name="context">Contextual details for the validation process.</param>
+            <param name="context">Contextual details for the evaluation process.</param>
         </member>
         <member name="M:Json.Schema.ContentSchemaKeyword.Equals(Json.Schema.ContentSchemaKeyword)">
             <summary>Indicates whether the current object is equal to another object of the same type.</summary>
@@ -829,6 +799,11 @@
             Handles `default`.
             </summary>
         </member>
+        <member name="F:Json.Schema.DefaultKeyword.Name">
+            <summary>
+            The JSON name of the keyword.
+            </summary>
+        </member>
         <member name="P:Json.Schema.DefaultKeyword.Value">
             <summary>
             The value to use as the default.
@@ -840,11 +815,11 @@
             </summary>
             <param name="value">The value to use as the default.</param>
         </member>
-        <member name="M:Json.Schema.DefaultKeyword.Validate(Json.Schema.ValidationContext)">
+        <member name="M:Json.Schema.DefaultKeyword.Evaluate(Json.Schema.EvaluationContext)">
             <summary>
-            Provides validation for the keyword.
+            Performs evaluation for the keyword.
             </summary>
-            <param name="context">Contextual details for the validation process.</param>
+            <param name="context">Contextual details for the evaluation process.</param>
         </member>
         <member name="M:Json.Schema.DefaultKeyword.Equals(Json.Schema.DefaultKeyword)">
             <summary>Indicates whether the current object is equal to another object of the same type.</summary>
@@ -865,6 +840,11 @@
             Handles `definitions`.
             </summary>
         </member>
+        <member name="F:Json.Schema.DefinitionsKeyword.Name">
+            <summary>
+            The JSON name of the keyword.
+            </summary>
+        </member>
         <member name="P:Json.Schema.DefinitionsKeyword.Definitions">
             <summary>
             The collection of schema definitions.
@@ -876,11 +856,11 @@
             </summary>
             <param name="values">The collection of schema definitions.</param>
         </member>
-        <member name="M:Json.Schema.DefinitionsKeyword.Validate(Json.Schema.ValidationContext)">
+        <member name="M:Json.Schema.DefinitionsKeyword.Evaluate(Json.Schema.EvaluationContext)">
             <summary>
-            Provides validation for the keyword.
+            Performs evaluation for the keyword.
             </summary>
-            <param name="context">Contextual details for the validation process.</param>
+            <param name="context">Contextual details for the evaluation process.</param>
         </member>
         <member name="M:Json.Schema.DefinitionsKeyword.Equals(Json.Schema.DefinitionsKeyword)">
             <summary>Indicates whether the current object is equal to another object of the same type.</summary>
@@ -901,6 +881,11 @@
             Handles `$defs`.
             </summary>
         </member>
+        <member name="F:Json.Schema.DefsKeyword.Name">
+            <summary>
+            The JSON name of the keyword.
+            </summary>
+        </member>
         <member name="P:Json.Schema.DefsKeyword.Definitions">
             <summary>
             The collection of schema definitions.
@@ -912,11 +897,11 @@
             </summary>
             <param name="values">The collection of schema definitions.</param>
         </member>
-        <member name="M:Json.Schema.DefsKeyword.Validate(Json.Schema.ValidationContext)">
+        <member name="M:Json.Schema.DefsKeyword.Evaluate(Json.Schema.EvaluationContext)">
             <summary>
-            Provides validation for the keyword.
+            Performs evaluation for the keyword.
             </summary>
-            <param name="context">Contextual details for the validation process.</param>
+            <param name="context">Contextual details for the evaluation process.</param>
         </member>
         <member name="M:Json.Schema.DefsKeyword.Equals(Json.Schema.DefsKeyword)">
             <summary>Indicates whether the current object is equal to another object of the same type.</summary>
@@ -937,6 +922,11 @@
             Handles `dependencies`.
             </summary>
         </member>
+        <member name="F:Json.Schema.DependenciesKeyword.Name">
+            <summary>
+            The JSON name of the keyword.
+            </summary>
+        </member>
         <member name="P:Json.Schema.DependenciesKeyword.Requirements">
             <summary>
             The collection of dependencies.
@@ -948,11 +938,11 @@
             </summary>
             <param name="values">The collection of dependencies.</param>
         </member>
-        <member name="M:Json.Schema.DependenciesKeyword.Validate(Json.Schema.ValidationContext)">
+        <member name="M:Json.Schema.DependenciesKeyword.Evaluate(Json.Schema.EvaluationContext)">
             <summary>
-            Provides validation for the keyword.
+            Performs evaluation for the keyword.
             </summary>
-            <param name="context">Contextual details for the validation process.</param>
+            <param name="context">Contextual details for the evaluation process.</param>
         </member>
         <member name="M:Json.Schema.DependenciesKeyword.Equals(Json.Schema.DependenciesKeyword)">
             <summary>Indicates whether the current object is equal to another object of the same type.</summary>
@@ -1014,6 +1004,11 @@
             Handles `dependentRequired`.
             </summary>
         </member>
+        <member name="F:Json.Schema.DependentRequiredKeyword.Name">
+            <summary>
+            The JSON name of the keyword.
+            </summary>
+        </member>
         <member name="P:Json.Schema.DependentRequiredKeyword.Requirements">
             <summary>
             The collection of "required"-type dependencies.
@@ -1025,11 +1020,11 @@
             </summary>
             <param name="values">The collection of "required"-type dependencies.</param>
         </member>
-        <member name="M:Json.Schema.DependentRequiredKeyword.Validate(Json.Schema.ValidationContext)">
+        <member name="M:Json.Schema.DependentRequiredKeyword.Evaluate(Json.Schema.EvaluationContext)">
             <summary>
-            Provides validation for the keyword.
+            Performs evaluation for the keyword.
             </summary>
-            <param name="context">Contextual details for the validation process.</param>
+            <param name="context">Contextual details for the evaluation process.</param>
         </member>
         <member name="M:Json.Schema.DependentRequiredKeyword.Equals(Json.Schema.DependentRequiredKeyword)">
             <summary>Indicates whether the current object is equal to another object of the same type.</summary>
@@ -1050,6 +1045,11 @@
             Handles `dependentSchemas`.
             </summary>
         </member>
+        <member name="F:Json.Schema.DependentSchemasKeyword.Name">
+            <summary>
+            The JSON name of the keyword.
+            </summary>
+        </member>
         <member name="P:Json.Schema.DependentSchemasKeyword.Schemas">
             <summary>
             The collection of "schema"-type dependencies.
@@ -1061,11 +1061,11 @@
             </summary>
             <param name="values">The collection of "schema"-type dependencies.</param>
         </member>
-        <member name="M:Json.Schema.DependentSchemasKeyword.Validate(Json.Schema.ValidationContext)">
+        <member name="M:Json.Schema.DependentSchemasKeyword.Evaluate(Json.Schema.EvaluationContext)">
             <summary>
-            Provides validation for the keyword.
+            Performs evaluation for the keyword.
             </summary>
-            <param name="context">Contextual details for the validation process.</param>
+            <param name="context">Contextual details for the evaluation process.</param>
         </member>
         <member name="M:Json.Schema.DependentSchemasKeyword.Equals(Json.Schema.DependentSchemasKeyword)">
             <summary>Indicates whether the current object is equal to another object of the same type.</summary>
@@ -1081,9 +1081,33 @@
             <summary>Serves as the default hash function.</summary>
             <returns>A hash code for the current object.</returns>
         </member>
+        <member name="T:Json.Schema.DependsOnAnnotationsFromAttribute">
+            <summary>
+            Indicates a keyword from which the decorated keyword requires annotations.
+            </summary>
+            <summary>
+            Apply this attribute to your schema keyword to indicate a dependency on another keyword.
+            </summary>
+        </member>
+        <member name="P:Json.Schema.DependsOnAnnotationsFromAttribute.DependentType">
+            <summary>
+            The dependent type.
+            </summary>
+        </member>
+        <member name="M:Json.Schema.DependsOnAnnotationsFromAttribute.#ctor(System.Type)">
+            <summary>
+            Creates a new <see cref="T:Json.Schema.DependsOnAnnotationsFromAttribute"/> instance.
+            </summary>
+            <param name="type">The dependent type.</param>
+        </member>
         <member name="T:Json.Schema.DeprecatedKeyword">
             <summary>
             Handles `deprecated`.
+            </summary>
+        </member>
+        <member name="F:Json.Schema.DeprecatedKeyword.Name">
+            <summary>
+            The JSON name of the keyword.
             </summary>
         </member>
         <member name="P:Json.Schema.DeprecatedKeyword.Value">
@@ -1097,11 +1121,11 @@
             </summary>
             <param name="value">Whether the schema is deprecated.</param>
         </member>
-        <member name="M:Json.Schema.DeprecatedKeyword.Validate(Json.Schema.ValidationContext)">
+        <member name="M:Json.Schema.DeprecatedKeyword.Evaluate(Json.Schema.EvaluationContext)">
             <summary>
-            Provides validation for the keyword.
+            Performs evaluation for the keyword.
             </summary>
-            <param name="context">Contextual details for the validation process.</param>
+            <param name="context">Contextual details for the evaluation process.</param>
         </member>
         <member name="M:Json.Schema.DeprecatedKeyword.Equals(Json.Schema.DeprecatedKeyword)">
             <summary>Indicates whether the current object is equal to another object of the same type.</summary>
@@ -1122,6 +1146,11 @@
             Handles `description`.
             </summary>
         </member>
+        <member name="F:Json.Schema.DescriptionKeyword.Name">
+            <summary>
+            The JSON name of the keyword.
+            </summary>
+        </member>
         <member name="P:Json.Schema.DescriptionKeyword.Value">
             <summary>
             The description.
@@ -1133,11 +1162,11 @@
             </summary>
             <param name="value">The description.</param>
         </member>
-        <member name="M:Json.Schema.DescriptionKeyword.Validate(Json.Schema.ValidationContext)">
+        <member name="M:Json.Schema.DescriptionKeyword.Evaluate(Json.Schema.EvaluationContext)">
             <summary>
-            Provides validation for the keyword.
+            Performs evaluation for the keyword.
             </summary>
-            <param name="context">Contextual details for the validation process.</param>
+            <param name="context">Contextual details for the evaluation process.</param>
         </member>
         <member name="M:Json.Schema.DescriptionKeyword.Equals(Json.Schema.DescriptionKeyword)">
             <summary>Indicates whether the current object is equal to another object of the same type.</summary>
@@ -1152,36 +1181,6 @@
         <member name="M:Json.Schema.DescriptionKeyword.GetHashCode">
             <summary>Serves as the default hash function.</summary>
             <returns>A hash code for the current object.</returns>
-        </member>
-        <member name="T:Json.Schema.Draft">
-            <summary>
-            Enumerates the supported JSON Schema drafts.
-            </summary>
-        </member>
-        <member name="F:Json.Schema.Draft.Unspecified">
-            <summary>
-            The draft to use should be determined by the collection of keywords.
-            </summary>
-        </member>
-        <member name="F:Json.Schema.Draft.Draft6">
-            <summary>
-            JSON Schema Draft 6.
-            </summary>
-        </member>
-        <member name="F:Json.Schema.Draft.Draft7">
-            <summary>
-            JSON Schema Draft 7.
-            </summary>
-        </member>
-        <member name="F:Json.Schema.Draft.Draft201909">
-            <summary>
-            JSON Schema Draft 2019-09.
-            </summary>
-        </member>
-        <member name="F:Json.Schema.Draft.Draft202012">
-            <summary>
-            JSON Schema Draft 2020-12.
-            </summary>
         </member>
         <member name="T:Json.Schema.Duration">
             <summary>
@@ -1244,6 +1243,11 @@
             Handles `$dynamicAnchor`.
             </summary>
         </member>
+        <member name="F:Json.Schema.DynamicAnchorKeyword.Name">
+            <summary>
+            The JSON name of the keyword.
+            </summary>
+        </member>
         <member name="P:Json.Schema.DynamicAnchorKeyword.Value">
             <summary>
             Gets the anchor value.
@@ -1255,11 +1259,11 @@
             </summary>
             <param name="value">The anchor value.</param>
         </member>
-        <member name="M:Json.Schema.DynamicAnchorKeyword.Validate(Json.Schema.ValidationContext)">
+        <member name="M:Json.Schema.DynamicAnchorKeyword.Evaluate(Json.Schema.EvaluationContext)">
             <summary>
-            Provides validation for the keyword.
+            Performs evaluation for the keyword.
             </summary>
-            <param name="context">Contextual details for the validation process.</param>
+            <param name="context">Contextual details for the evaluation process.</param>
         </member>
         <member name="M:Json.Schema.DynamicAnchorKeyword.Equals(Json.Schema.DynamicAnchorKeyword)">
             <summary>Indicates whether the current object is equal to another object of the same type.</summary>
@@ -1280,6 +1284,11 @@
             Handles `$dynamicRef`.
             </summary>
         </member>
+        <member name="F:Json.Schema.DynamicRefKeyword.Name">
+            <summary>
+            The JSON name of the keyword.
+            </summary>
+        </member>
         <member name="P:Json.Schema.DynamicRefKeyword.Reference">
             <summary>
             The URI reference.
@@ -1291,11 +1300,11 @@
             </summary>
             <param name="value"></param>
         </member>
-        <member name="M:Json.Schema.DynamicRefKeyword.Validate(Json.Schema.ValidationContext)">
+        <member name="M:Json.Schema.DynamicRefKeyword.Evaluate(Json.Schema.EvaluationContext)">
             <summary>
-            Provides validation for the keyword.
+            Performs evaluation for the keyword.
             </summary>
-            <param name="context">Contextual details for the validation process.</param>
+            <param name="context">Contextual details for the evaluation process.</param>
         </member>
         <member name="M:Json.Schema.DynamicRefKeyword.Equals(Json.Schema.DynamicRefKeyword)">
             <summary>Indicates whether the current object is equal to another object of the same type.</summary>
@@ -1311,9 +1320,31 @@
             <summary>Serves as the default hash function.</summary>
             <returns>A hash code for the current object.</returns>
         </member>
+        <member name="T:Json.Schema.DynamicScope">
+            <summary>
+            Tracks the dynamic scope during schema evaluation.
+            </summary>
+            <remarks>
+            Dynamic scope is the collection of URIs (defined by `$id`) represented by the evaluation path.
+            </remarks>
+        </member>
+        <member name="P:Json.Schema.DynamicScope.LocalScope">
+            <summary>
+            Gets the local scope, or the most recent schema URI encountered.
+            </summary>
+        </member>
+        <member name="M:Json.Schema.DynamicScope.GetEnumerator">
+            <summary>Returns an enumerator that iterates through the collection.</summary>
+            <returns>An enumerator that can be used to iterate through the collection.</returns>
+        </member>
         <member name="T:Json.Schema.ElseKeyword">
             <summary>
             Handles `else`.
+            </summary>
+        </member>
+        <member name="F:Json.Schema.ElseKeyword.Name">
+            <summary>
+            The JSON name of the keyword.
             </summary>
         </member>
         <member name="P:Json.Schema.ElseKeyword.Schema">
@@ -1327,11 +1358,11 @@
             </summary>
             <param name="value">The schema to match.</param>
         </member>
-        <member name="M:Json.Schema.ElseKeyword.Validate(Json.Schema.ValidationContext)">
+        <member name="M:Json.Schema.ElseKeyword.Evaluate(Json.Schema.EvaluationContext)">
             <summary>
-            Provides validation for the keyword.
+            Performs evaluation for the keyword.
             </summary>
-            <param name="context">Contextual details for the validation process.</param>
+            <param name="context">Contextual details for the evaluation process.</param>
         </member>
         <member name="M:Json.Schema.ElseKeyword.Equals(Json.Schema.ElseKeyword)">
             <summary>Indicates whether the current object is equal to another object of the same type.</summary>
@@ -1409,6 +1440,11 @@
             Handles `enum`.
             </summary>
         </member>
+        <member name="F:Json.Schema.EnumKeyword.Name">
+            <summary>
+            The JSON name of the keyword.
+            </summary>
+        </member>
         <member name="P:Json.Schema.EnumKeyword.Values">
             <summary>
             The collection of enum values.
@@ -1429,11 +1465,11 @@
             </summary>
             <param name="values">The collection of enum values.</param>
         </member>
-        <member name="M:Json.Schema.EnumKeyword.Validate(Json.Schema.ValidationContext)">
+        <member name="M:Json.Schema.EnumKeyword.Evaluate(Json.Schema.EvaluationContext)">
             <summary>
-            Provides validation for the keyword.
+            Performs evaluation for the keyword.
             </summary>
-            <param name="context">Contextual details for the validation process.</param>
+            <param name="context">Contextual details for the evaluation process.</param>
         </member>
         <member name="M:Json.Schema.EnumKeyword.Equals(Json.Schema.EnumKeyword)">
             <summary>Indicates whether the current object is equal to another object of the same type.</summary>
@@ -1449,9 +1485,395 @@
             <summary>Serves as the default hash function.</summary>
             <returns>A hash code for the current object.</returns>
         </member>
+        <member name="T:Json.Schema.EvaluationContext">
+            <summary>
+            Provides a single source of data for evaluation operations.
+            </summary>
+        </member>
+        <member name="P:Json.Schema.EvaluationContext.Options">
+            <summary>
+            The option set for the evaluation.
+            </summary>
+        </member>
+        <member name="P:Json.Schema.EvaluationContext.SchemaRoot">
+            <summary>
+            The root schema.
+            </summary>
+        </member>
+        <member name="P:Json.Schema.EvaluationContext.EvaluationPath">
+            <summary>
+            The current subschema location relative to the schema root.
+            </summary>
+        </member>
+        <member name="P:Json.Schema.EvaluationContext.LocalSchema">
+            <summary>
+            The current subschema.
+            </summary>
+        </member>
+        <member name="P:Json.Schema.EvaluationContext.InstanceRoot">
+            <summary>
+            The instance root.
+            </summary>
+        </member>
+        <member name="P:Json.Schema.EvaluationContext.InstanceLocation">
+            <summary>
+            The current instance location relative to the instance root.
+            </summary>
+        </member>
+        <member name="P:Json.Schema.EvaluationContext.LocalInstance">
+            <summary>
+            The current instance.
+            </summary>
+        </member>
+        <member name="P:Json.Schema.EvaluationContext.Scope">
+            <summary>
+            Gets the scope of the current evaluation.
+            </summary>
+        </member>
+        <member name="P:Json.Schema.EvaluationContext.LocalResult">
+            <summary>
+            The result object for the current evaluation.
+            </summary>
+        </member>
+        <member name="P:Json.Schema.EvaluationContext.ApplyOptimizations">
+            <summary>
+            Whether processing optimizations can be applied (output format = flag).
+            </summary>
+        </member>
+        <member name="M:Json.Schema.EvaluationContext.Push(Json.Pointer.JsonPointer@,System.Text.Json.Nodes.JsonNode@,Json.Pointer.JsonPointer@,Json.Schema.JsonSchema@)">
+            <summary>
+            Pushes the state onto the stack and sets up for a nested layer of evaluation.
+            </summary>
+            <param name="instanceLocation">The location within the data instance root.</param>
+            <param name="instance">The data instance.</param>
+            <param name="evaluationPath">The location within the schema root.</param>
+            <param name="subschema">The subschema.</param>
+        </member>
+        <member name="M:Json.Schema.EvaluationContext.Push(Json.Pointer.JsonPointer@,Json.Schema.JsonSchema@)">
+            <summary>
+            Pushes the state onto the stack and sets up for a nested layer of evaluation.
+            </summary>
+            <param name="evaluationPath">The location within the schema root.</param>
+            <param name="subschema">The subschema.</param>
+        </member>
+        <member name="M:Json.Schema.EvaluationContext.Evaluate">
+            <summary>
+            Evaluates as a subschema.  To be called from within keywords.
+            </summary>
+        </member>
+        <member name="M:Json.Schema.EvaluationContext.Pop">
+            <summary>
+            Pops the state from the stack to return to a previous layer of evaluation.
+            </summary>
+        </member>
+        <member name="T:Json.Schema.EvaluationOptions">
+            <summary>
+            Allows configuration of the evaluation process.
+            </summary>
+        </member>
+        <member name="P:Json.Schema.EvaluationOptions.Default">
+            <summary>
+            The default settings.
+            </summary>
+        </member>
+        <member name="P:Json.Schema.EvaluationOptions.EvaluateAs">
+            <summary>
+            Indicates which specification version to process as.  This will filter the keywords
+            of a schema based on their support.
+            </summary>
+        </member>
+        <member name="P:Json.Schema.EvaluationOptions.ValidateAgainstMetaSchema">
+            <summary>
+            Indicates whether the schema should be validated against its `$schema` value.
+            this is not typically necessary.
+            </summary>
+        </member>
+        <member name="P:Json.Schema.EvaluationOptions.OutputFormat">
+            <summary>
+            Specifies the output format.
+            </summary>
+        </member>
+        <member name="P:Json.Schema.EvaluationOptions.SchemaRegistry">
+            <summary>
+            The local schema registry.  If a schema is not found here, it will
+            automatically check the global registry as well.
+            </summary>
+        </member>
+        <member name="P:Json.Schema.EvaluationOptions.VocabularyRegistry">
+            <summary>
+            The local vocabulary registry.  If a schema is not found here, it will
+            automatically check the global registry as well.
+            </summary>
+        </member>
+        <member name="P:Json.Schema.EvaluationOptions.LogIndentLevel">
+            <summary>
+            Gets or sets the indent level for the log.
+            </summary>
+        </member>
+        <member name="P:Json.Schema.EvaluationOptions.Log">
+            <summary>
+            Gets or sets a log which will output processing information.
+            </summary>
+        </member>
+        <member name="P:Json.Schema.EvaluationOptions.RequireFormatValidation">
+            <summary>
+            Specifies whether the `format` keyword should be required to provide
+            validation results.  Default is false, which just produces annotations
+            for drafts 2019-09 and prior or follows the behavior set forth by the
+            format-annotation vocabulary requirement in the `$vocabulary` keyword in
+            a meta-schema declaring draft 2020-12.
+            </summary>
+        </member>
+        <member name="P:Json.Schema.EvaluationOptions.OnlyKnownFormats">
+            <summary>
+            Specifies whether the `format` keyword should fail validations for
+            unknown formats.  Default is false.
+            </summary>
+            <remarks>
+            This option is applied whether `format` is using annotation or
+            assertion behavior.
+            </remarks>
+        </member>
+        <member name="P:Json.Schema.EvaluationOptions.ProcessCustomKeywords">
+            <summary>
+            Specifies whether custom keywords that aren't defined in vocabularies
+            should be processed.  Only applies to vocab-enabled JSON Schema versions
+            (e.g. draft 2019-09 &amp; 20200-12).  Default is false.
+            </summary>
+        </member>
+        <member name="P:Json.Schema.EvaluationOptions.PreserveDroppedAnnotations">
+            <summary>
+            If enabled, annotations that are dropped as a result of a failing
+            subschema will be reported in a `droppedAnnotations` property in
+            the output.
+            </summary>
+        </member>
+        <member name="P:Json.Schema.EvaluationOptions.IgnoredAnnotations">
+            <summary>
+            Gets the set of keyword types from which annotations will be ignored.
+            </summary>
+        </member>
+        <member name="M:Json.Schema.EvaluationOptions.#ctor">
+            <summary>
+            Create a new instance of the <see cref="T:Json.Schema.EvaluationOptions"/> class.
+            </summary>
+        </member>
+        <member name="M:Json.Schema.EvaluationOptions.From(Json.Schema.EvaluationOptions)">
+            <summary>
+            Creates a deep copy of the options.
+            </summary>
+            <param name="other">The source options.</param>
+            <returns>A new options instance with the same settings.</returns>
+        </member>
+        <member name="M:Json.Schema.EvaluationOptions.IgnoreAnnotationsFrom``1">
+            <summary>
+            Ignores annotations from the specified keyword.
+            </summary>
+            <typeparam name="T">The keyword type which should not have annotations.</typeparam>
+        </member>
+        <member name="M:Json.Schema.EvaluationOptions.IgnoreAllAnnotations">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Json.Schema.EvaluationOptions.ClearIgnoredAnnotations">
+            <summary>
+            Clears ignored annotations.
+            </summary>
+        </member>
+        <member name="M:Json.Schema.EvaluationOptions.CollectAnnotationsFrom``1">
+            <summary>
+            Restores annotation collection for the specified keyword.
+            </summary>
+        </member>
+        <member name="T:Json.Schema.EvaluationResults">
+            <summary>
+            The results object for evaluations.
+            </summary>
+        </member>
+        <member name="P:Json.Schema.EvaluationResults.IsValid">
+            <summary>
+            Indicates whether the validation passed or failed.
+            </summary>
+        </member>
+        <member name="P:Json.Schema.EvaluationResults.EvaluationPath">
+            <summary>
+            The schema location that generated this node.
+            </summary>
+        </member>
+        <member name="P:Json.Schema.EvaluationResults.InstanceLocation">
+            <summary>
+            The instance location that was processed.
+            </summary>
+        </member>
+        <member name="P:Json.Schema.EvaluationResults.SchemaLocation">
+            <summary>
+            The absolute schema location.
+            </summary>
+            <remarks>
+            If the schema did not have an absolute `$id`, a generated base URI will be used.
+            </remarks>
+        </member>
+        <member name="P:Json.Schema.EvaluationResults.Details">
+            <summary>
+            The collection of nested results.
+            </summary>
+        </member>
+        <member name="P:Json.Schema.EvaluationResults.HasDetails">
+            <summary>
+            Gets whether there are nested results.
+            </summary>
+            <remarks>
+            Because <see cref="P:Json.Schema.EvaluationResults.Details"/> is lazily loaded, this property allows the check without
+            the side effect of allocating a list object.
+            </remarks>
+        </member>
+        <member name="P:Json.Schema.EvaluationResults.Annotations">
+            <summary>
+            The collection of annotations from this node.
+            </summary>
+        </member>
+        <member name="P:Json.Schema.EvaluationResults.HasAnnotations">
+            <summary>
+            Gets whether this node has annotations.
+            </summary>
+        </member>
+        <member name="P:Json.Schema.EvaluationResults.Errors">
+            <summary>
+            The collection of error from this node.
+            </summary>
+        </member>
+        <member name="P:Json.Schema.EvaluationResults.HasErrors">
+            <summary>
+            Gets whether this node has errors.
+            </summary>
+        </member>
+        <member name="P:Json.Schema.EvaluationResults.Parent">
+            <summary>
+            Gets the parent result.
+            </summary>
+        </member>
+        <member name="M:Json.Schema.EvaluationResults.ToList">
+            <summary>
+            Transforms the results to the `basic` format.
+            </summary>
+        </member>
+        <member name="M:Json.Schema.EvaluationResults.ToFlag">
+            <summary>
+            Transforms the results to the `flag` format.
+            </summary>
+        </member>
+        <member name="M:Json.Schema.EvaluationResults.SetAnnotation(System.String,System.Text.Json.Nodes.JsonNode)">
+            <summary>
+            Sets an annotation.
+            </summary>
+            <param name="keyword">The annotation key.  Typically the name of the keyword.</param>
+            <param name="value">The annotation value.</param>
+        </member>
+        <member name="M:Json.Schema.EvaluationResults.TryGetAnnotation(System.String,System.Text.Json.Nodes.JsonNode@)">
+            <summary>
+            Tries to get an annotation.
+            </summary>
+            <param name="keyword">The annotation key.</param>
+            <param name="annotation"></param>
+            <returns>The annotation or null.</returns>
+        </member>
+        <member name="M:Json.Schema.EvaluationResults.GetAllAnnotations(System.String)">
+            <summary>
+            Gets all annotations of a particular data type for the current evaluation level.
+            </summary>
+            <param name="keyword">The key under which the annotation is stored.  Typically a keyword.</param>
+            <returns>The set of all annotations for the current evaluation level.</returns>
+        </member>
+        <member name="M:Json.Schema.EvaluationResults.Fail">
+            <summary>
+            Marks the result as invalid.
+            </summary>
+            <remarks>
+            For better support for customization, consider using the overload that takes parameters.
+            </remarks>
+        </member>
+        <member name="M:Json.Schema.EvaluationResults.Fail(System.String,System.String)">
+            <summary>
+            Marks the result as invalid.
+            </summary>
+            <param name="keyword">The keyword that failed validation.</param>
+            <param name="message">(optional) An error message.</param>
+            <remarks>
+            For better support for customization, consider using the overload that takes parameters.
+            </remarks>
+        </member>
+        <member name="M:Json.Schema.EvaluationResults.Fail(System.String,System.String,System.ValueTuple{System.String,System.Object}[])">
+            <summary>
+            Marks the result as invalid.
+            </summary>
+            <param name="keyword">The keyword that failed validation.</param>
+            <param name="message">The error message.</param>
+            <param name="parameters">Parameters to replace in the message.</param>
+        </member>
+        <member name="M:Json.Schema.EvaluationResults.Ignore">
+            <summary>
+            Marks the result of this keyword to be excluded from output.
+            </summary>
+            <remarks>
+            This is used for keywords like `$defs` which don't actually have any
+            annotation or assertion behavior and exist solely to house data.
+            </remarks>
+        </member>
+        <member name="T:Json.Schema.Pre202012EvaluationResultsJsonConverter">
+            <summary>
+            Produces output formats specified by 2019-09 and 2020-12.
+            </summary>
+        </member>
+        <member name="T:Json.Schema.Pre202012EvaluationResultsJsonConverter.Annotation">
+            <summary>
+            Holder for an annotation value.
+            </summary>
+        </member>
+        <member name="P:Json.Schema.Pre202012EvaluationResultsJsonConverter.Annotation.Owner">
+            <summary>
+            The keyword that created the annotation (acts as a key for lookup).
+            </summary>
+        </member>
+        <member name="P:Json.Schema.Pre202012EvaluationResultsJsonConverter.Annotation.Value">
+            <summary>
+            The annotation value.
+            </summary>
+        </member>
+        <member name="P:Json.Schema.Pre202012EvaluationResultsJsonConverter.Annotation.Source">
+            <summary>
+            The pointer to the keyword that created the annotation.
+            </summary>
+        </member>
+        <member name="M:Json.Schema.Pre202012EvaluationResultsJsonConverter.Annotation.#ctor(System.String,System.Object,Json.Pointer.JsonPointer@)">
+            <summary>
+            Creates a new <see cref="T:Json.Schema.Pre202012EvaluationResultsJsonConverter.Annotation"/>.
+            </summary>
+            <param name="owner">The keyword that created the annotation (acts as a key for lookup).</param>
+            <param name="value">The annotation value.</param>
+            <param name="source">The pointer to the keyword that created the annotation.</param>
+        </member>
+        <member name="M:Json.Schema.Pre202012EvaluationResultsJsonConverter.Read(System.Text.Json.Utf8JsonReader@,System.Type,System.Text.Json.JsonSerializerOptions)">
+            <summary>Reads and converts the JSON to type <see cref="T:Json.Schema.EvaluationResults"/>.</summary>
+            <param name="reader">The reader.</param>
+            <param name="typeToConvert">The type to convert.</param>
+            <param name="options">An object that specifies serialization options to use.</param>
+            <returns>The converted value.</returns>
+        </member>
+        <member name="M:Json.Schema.Pre202012EvaluationResultsJsonConverter.Write(System.Text.Json.Utf8JsonWriter,Json.Schema.EvaluationResults,System.Text.Json.JsonSerializerOptions)">
+            <summary>Writes a specified value as JSON.</summary>
+            <param name="writer">The writer to write to.</param>
+            <param name="value">The value to convert to JSON.</param>
+            <param name="options">An object that specifies serialization options to use.</param>
+        </member>
         <member name="T:Json.Schema.ExamplesKeyword">
             <summary>
             Handles `examples`.
+            </summary>
+        </member>
+        <member name="F:Json.Schema.ExamplesKeyword.Name">
+            <summary>
+            The JSON name of the keyword.
             </summary>
         </member>
         <member name="P:Json.Schema.ExamplesKeyword.Values">
@@ -1471,11 +1893,11 @@
             </summary>
             <param name="values">The collection of example values.</param>
         </member>
-        <member name="M:Json.Schema.ExamplesKeyword.Validate(Json.Schema.ValidationContext)">
+        <member name="M:Json.Schema.ExamplesKeyword.Evaluate(Json.Schema.EvaluationContext)">
             <summary>
-            Provides validation for the keyword.
+            Performs evaluation for the keyword.
             </summary>
-            <param name="context">Contextual details for the validation process.</param>
+            <param name="context">Contextual details for the evaluation process.</param>
         </member>
         <member name="M:Json.Schema.ExamplesKeyword.Equals(Json.Schema.ExamplesKeyword)">
             <summary>Indicates whether the current object is equal to another object of the same type.</summary>
@@ -1496,6 +1918,11 @@
             Handles `exclusiveMaximum`.
             </summary>
         </member>
+        <member name="F:Json.Schema.ExclusiveMaximumKeyword.Name">
+            <summary>
+            The JSON name of the keyword.
+            </summary>
+        </member>
         <member name="P:Json.Schema.ExclusiveMaximumKeyword.Value">
             <summary>
             The maximum value.
@@ -1507,11 +1934,11 @@
             </summary>
             <param name="value">The maximum value.</param>
         </member>
-        <member name="M:Json.Schema.ExclusiveMaximumKeyword.Validate(Json.Schema.ValidationContext)">
+        <member name="M:Json.Schema.ExclusiveMaximumKeyword.Evaluate(Json.Schema.EvaluationContext)">
             <summary>
-            Provides validation for the keyword.
+            Performs evaluation for the keyword.
             </summary>
-            <param name="context">Contextual details for the validation process.</param>
+            <param name="context">Contextual details for the evaluation process.</param>
         </member>
         <member name="M:Json.Schema.ExclusiveMaximumKeyword.Equals(Json.Schema.ExclusiveMaximumKeyword)">
             <summary>Indicates whether the current object is equal to another object of the same type.</summary>
@@ -1532,6 +1959,11 @@
             Handles `exclusiveMinimum`.
             </summary>
         </member>
+        <member name="F:Json.Schema.ExclusiveMinimumKeyword.Name">
+            <summary>
+            The JSON name of the keyword.
+            </summary>
+        </member>
         <member name="P:Json.Schema.ExclusiveMinimumKeyword.Value">
             <summary>
             The minimum value.
@@ -1543,11 +1975,11 @@
             </summary>
             <param name="value">The minimum value.</param>
         </member>
-        <member name="M:Json.Schema.ExclusiveMinimumKeyword.Validate(Json.Schema.ValidationContext)">
+        <member name="M:Json.Schema.ExclusiveMinimumKeyword.Evaluate(Json.Schema.EvaluationContext)">
             <summary>
-            Provides validation for the keyword.
+            Performs evaluation for the keyword.
             </summary>
-            <param name="context">Contextual details for the validation process.</param>
+            <param name="context">Contextual details for the evaluation process.</param>
         </member>
         <member name="M:Json.Schema.ExclusiveMinimumKeyword.Equals(Json.Schema.ExclusiveMinimumKeyword)">
             <summary>Indicates whether the current object is equal to another object of the same type.</summary>
@@ -1592,6 +2024,11 @@
             Handles `format`.
             </summary>
         </member>
+        <member name="F:Json.Schema.FormatKeyword.Name">
+            <summary>
+            The JSON name of the keyword.
+            </summary>
+        </member>
         <member name="P:Json.Schema.FormatKeyword.Value">
             <summary>
             The format.
@@ -1603,11 +2040,11 @@
             </summary>
             <param name="value">The format.</param>
         </member>
-        <member name="M:Json.Schema.FormatKeyword.Validate(Json.Schema.ValidationContext)">
+        <member name="M:Json.Schema.FormatKeyword.Evaluate(Json.Schema.EvaluationContext)">
             <summary>
-            Provides validation for the keyword.
+            Performs evaluation for the keyword.
             </summary>
-            <param name="context">Contextual details for the validation process.</param>
+            <param name="context">Contextual details for the evaluation process.</param>
         </member>
         <member name="M:Json.Schema.FormatKeyword.Equals(Json.Schema.FormatKeyword)">
             <summary>Indicates whether the current object is equal to another object of the same type.</summary>
@@ -1747,9 +2184,33 @@
             <param name="name">The format key.</param>
             <returns>A <see cref="T:Json.Schema.Format"/> instance.</returns>
         </member>
+        <member name="T:Json.Schema.ICustomSchemaCollector">
+            <summary>
+            Indicates that the keyword contains subschemas in such a way that does not
+            fit with <see cref="T:Json.Schema.ISchemaContainer"/>, <see cref="T:Json.Schema.ISchemaCollector"/>, or
+            <see cref="T:Json.Schema.IKeyedSchemaCollector"/>.
+            </summary>
+        </member>
+        <member name="P:Json.Schema.ICustomSchemaCollector.Schemas">
+            <summary>
+            The subschemas.
+            </summary>
+        </member>
+        <member name="M:Json.Schema.ICustomSchemaCollector.FindSubschema(System.Collections.Generic.IReadOnlyList{Json.Pointer.PointerSegment})">
+            <summary>
+            Gets the indicated subschema.
+            </summary>
+            <param name="segments">The JSON Pointer segments to follow.</param>
+            <returns>If found, the schema and the number of segments followed to find the subschema; `(null, 0)` otherwise.</returns>
+        </member>
         <member name="T:Json.Schema.IdKeyword">
             <summary>
             Handles `$id`.
+            </summary>
+        </member>
+        <member name="F:Json.Schema.IdKeyword.Name">
+            <summary>
+            The JSON name of the keyword.
             </summary>
         </member>
         <member name="P:Json.Schema.IdKeyword.Id">
@@ -1763,11 +2224,11 @@
             </summary>
             <param name="id">The ID.</param>
         </member>
-        <member name="M:Json.Schema.IdKeyword.Validate(Json.Schema.ValidationContext)">
+        <member name="M:Json.Schema.IdKeyword.Evaluate(Json.Schema.EvaluationContext)">
             <summary>
-            Provides validation for the keyword.
+            Performs evaluation for the keyword.
             </summary>
-            <param name="context">Contextual details for the validation process.</param>
+            <param name="context">Contextual details for the evaluation process.</param>
         </member>
         <member name="M:Json.Schema.IdKeyword.Equals(Json.Schema.IdKeyword)">
             <summary>Indicates whether the current object is equal to another object of the same type.</summary>
@@ -1788,6 +2249,11 @@
             Handles `if`.
             </summary>
         </member>
+        <member name="F:Json.Schema.IfKeyword.Name">
+            <summary>
+            The JSON name of the keyword.
+            </summary>
+        </member>
         <member name="P:Json.Schema.IfKeyword.Schema">
             <summary>
             The schema to match.
@@ -1799,11 +2265,11 @@
             </summary>
             <param name="value">The schema to match.</param>
         </member>
-        <member name="M:Json.Schema.IfKeyword.Validate(Json.Schema.ValidationContext)">
+        <member name="M:Json.Schema.IfKeyword.Evaluate(Json.Schema.EvaluationContext)">
             <summary>
-            Provides validation for the keyword.
+            Performs evaluation for the keyword.
             </summary>
-            <param name="context">Contextual details for the validation process.</param>
+            <param name="context">Contextual details for the evaluation process.</param>
         </member>
         <member name="M:Json.Schema.IfKeyword.Equals(Json.Schema.IfKeyword)">
             <summary>Indicates whether the current object is equal to another object of the same type.</summary>
@@ -1824,11 +2290,11 @@
             Defines basic functionality for schema keywords.
             </summary>
         </member>
-        <member name="M:Json.Schema.IJsonSchemaKeyword.Validate(Json.Schema.ValidationContext)">
+        <member name="M:Json.Schema.IJsonSchemaKeyword.Evaluate(Json.Schema.EvaluationContext)">
             <summary>
-            Provides validation for the keyword.
+            Performs evaluation for the keyword.
             </summary>
-            <param name="context">Contextual details for the validation process.</param>
+            <param name="context">Contextual details for the evaluation process.</param>
         </member>
         <member name="T:Json.Schema.IKeyedSchemaCollector">
             <summary>
@@ -1851,25 +2317,6 @@
             </summary>
             <param name="message">The message.</param>
             <param name="indent"></param>
-        </member>
-        <member name="T:Json.Schema.IRefResolvable">
-            <summary>
-            Defines functionality required to resolve `$ref` and `$recursiveRef` keywords.
-            </summary>
-            <remarks>
-            Should be implemented for any keyword that contains navigable data.
-            </remarks>
-        </member>
-        <member name="M:Json.Schema.IRefResolvable.RegisterSubschemas(Json.Schema.SchemaRegistry,System.Uri)">
-            <summary>
-            Passes registration of any subschemas back to <see cref="M:Json.Schema.JsonSchema.RegisterSubschemas(Json.Schema.SchemaRegistry,System.Uri)"/>.
-            </summary>
-            <param name="registry">The registry into which the subschema should be registered.</param>
-            <param name="currentUri">The current URI.</param>
-            <remarks>
-            Just call <see cref="M:Json.Schema.JsonSchema.RegisterSubschemas(Json.Schema.SchemaRegistry,System.Uri)"/> on each schema
-            contained within the keyword.  
-            </remarks>
         </member>
         <member name="T:Json.Schema.ISchemaCollector">
             <summary>
@@ -1894,6 +2341,11 @@
         <member name="T:Json.Schema.ItemsKeyword">
             <summary>
             Handles `items`.
+            </summary>
+        </member>
+        <member name="F:Json.Schema.ItemsKeyword.Name">
+            <summary>
+            The JSON name of the keyword.
             </summary>
         </member>
         <member name="P:Json.Schema.ItemsKeyword.SingleSchema">
@@ -1928,11 +2380,11 @@
             </summary>
             <param name="values">The collection of schemas for the "schema array" form.</param>
         </member>
-        <member name="M:Json.Schema.ItemsKeyword.Validate(Json.Schema.ValidationContext)">
+        <member name="M:Json.Schema.ItemsKeyword.Evaluate(Json.Schema.EvaluationContext)">
             <summary>
-            Provides validation for the keyword.
+            Performs evaluation for the keyword.
             </summary>
-            <param name="context">Contextual details for the validation process.</param>
+            <param name="context">Contextual details for the evaluation process.</param>
         </member>
         <member name="M:Json.Schema.ItemsKeyword.Equals(Json.Schema.ItemsKeyword)">
             <summary>Indicates whether the current object is equal to another object of the same type.</summary>
@@ -1961,13 +2413,12 @@
             <returns>The <see cref="T:Json.Schema.SchemaValueType"/> of the node.</returns>
             <exception cref="T:System.ArgumentOutOfRangeException"></exception>
         </member>
-        <member name="M:Json.Schema.JsonNodeExtensions.VerifyJsonObject(System.Text.Json.Nodes.JsonObject,Json.Schema.ValidationContext)">
+        <member name="M:Json.Schema.JsonNodeExtensions.VerifyJsonObject(System.Text.Json.Nodes.JsonObject)">
             <summary>
             Verifies that a <see cref="T:System.Text.Json.Nodes.JsonObject"/> doesn't have any duplicate keys and can
             therefore be processed.
             </summary>
             <param name="obj">The object.</param>
-            <param name="context">The validation context to log errors.</param>
             <returns>true if the the object can be processed; false otherwise.</returns>
             <remarks>See https://github.com/dotnet/runtime/issues/70604 for more information.</remarks>
         </member>
@@ -2001,6 +2452,28 @@
             For boolean schemas, gets the value.  Null if the schema isn't a boolean schema.
             </summary>
         </member>
+        <member name="P:Json.Schema.JsonSchema.BaseUri">
+             <summary>
+             Gets the base URI that applies to this schema.  This may be defined by a parent schema.
+             </summary>
+             <remarks>
+             This property is initialized to a generated random value that matches `https://json-everything.net/{random}`
+             where `random` is 10 hex characters.
+            
+             It may change after the initial evaluation based on whether the schema contains an `$id` keyword
+             or is a child of another schema.
+             </remarks>
+        </member>
+        <member name="P:Json.Schema.JsonSchema.IsResourceRoot">
+            <summary>
+            Gets whether the schema defines a new schema resource.  This will only be true if it contains an `$id` keyword.
+            </summary>
+        </member>
+        <member name="P:Json.Schema.JsonSchema.DeclaredVersion">
+            <summary>
+            Gets the specification version as determined by analyzing the `$schema` keyword, if it exists.
+            </summary>
+        </member>
         <member name="M:Json.Schema.JsonSchema.FromFile(System.String,System.Text.Json.JsonSerializerOptions)">
             <summary>
             Loads text from a file and deserializes a <see cref="T:Json.Schema.JsonSchema"/>.
@@ -2028,30 +2501,17 @@
             <param name="options">Serializer options.</param>
             <returns>A new <see cref="T:Json.Schema.JsonSchema"/>.</returns>
         </member>
-        <member name="M:Json.Schema.JsonSchema.Validate(System.Text.Json.Nodes.JsonNode,Json.Schema.ValidationOptions)">
+        <member name="M:Json.Schema.JsonSchema.Evaluate(System.Text.Json.Nodes.JsonNode,Json.Schema.EvaluationOptions)">
             <summary>
-            Validates an instance against this schema.
+            Evaluates an instance against this schema.
             </summary>
             <param name="root">The root instance.</param>
-            <param name="options">The options to use for this validation.</param>
-            <returns>A <see cref="T:Json.Schema.ValidationResults"/> that provides the outcome of the validation.</returns>
-        </member>
-        <member name="M:Json.Schema.JsonSchema.RegisterSubschemas(Json.Schema.SchemaRegistry,System.Uri)">
-            <summary>
-            Registers a subschema.  To be called from <see cref="T:Json.Schema.IRefResolvable"/> keywords.
-            </summary>
-            <param name="registry">The registry into which the subschema should be registered.</param>
-            <param name="currentUri">The current URI.</param>
-        </member>
-        <member name="M:Json.Schema.JsonSchema.ValidateSubschema(Json.Schema.ValidationContext)">
-            <summary>
-            Validates as a subschema.  To be called from within keywords.
-            </summary>
-            <param name="context">The validation context for this validation pass.</param>
+            <param name="options">The options to use for this evaluation.</param>
+            <returns>A <see cref="T:Json.Schema.EvaluationResults"/> that provides the outcome of the evaluation.</returns>
         </member>
         <member name="M:Json.Schema.JsonSchema.op_Implicit(System.Boolean)~Json.Schema.JsonSchema">
             <summary>
-            Implicitly converts a boolean value into one of the boolean schemas.
+            Implicitly converts a boolean value into one of the boolean schemas. 
             </summary>
             <param name="value">The boolean value.</param>
         </member>
@@ -2639,6 +3099,22 @@
             <param name="props">The property schemas.</param>
             <returns>The builder.</returns>
         </member>
+        <member name="M:Json.Schema.JsonSchemaBuilderExtensions.PropertyDependencies(Json.Schema.JsonSchemaBuilder,System.Collections.Generic.IReadOnlyDictionary{System.String,Json.Schema.PropertyDependency})">
+            <summary>
+            Adds a `propertyDependencies` keyword.
+            </summary>
+            <param name="builder">The builder.</param>
+            <param name="dependencies">The property dependency schemas.</param>
+            <returns>The builder.</returns>
+        </member>
+        <member name="M:Json.Schema.JsonSchemaBuilderExtensions.PropertyDependencies(Json.Schema.JsonSchemaBuilder,System.ValueTuple{System.String,Json.Schema.PropertyDependency}[])">
+            <summary>
+            Adds a `propertyDependencies` keyword.
+            </summary>
+            <param name="builder">The builder.</param>
+            <param name="dependencies">The property dependency schemas.</param>
+            <returns>The builder.</returns>
+        </member>
         <member name="M:Json.Schema.JsonSchemaBuilderExtensions.PropertyNames(Json.Schema.JsonSchemaBuilder,Json.Schema.JsonSchema)">
             <summary>
             Add a `propertyNames` keyword.
@@ -2843,37 +3319,84 @@
             <param name="value">Whether the instance is write-only.</param>
             <returns>The builder.</returns>
         </member>
-        <member name="M:Json.Schema.JsonSchemaBuilderExtensions.Validate(Json.Schema.JsonSchemaBuilder,System.Text.Json.Nodes.JsonNode,Json.Schema.ValidationOptions)">
+        <member name="M:Json.Schema.JsonSchemaBuilderExtensions.Evaluate(Json.Schema.JsonSchemaBuilder,System.Text.Json.Nodes.JsonNode,Json.Schema.EvaluationOptions)">
             <summary>
-            Convenience method that builds and validates with a single call.
+            Convenience method that builds and evaluates with a single call.
             </summary>
             <param name="builder">The builder.</param>
             <param name="root">The root instance.</param>
-            <param name="options">The options to use for this validation.</param>
-            <returns>A <see cref="T:Json.Schema.ValidationResults"/> that provides the outcome of the validation.</returns>
+            <param name="options">The options to use for this evaluation.</param>
+            <returns>A <see cref="T:Json.Schema.EvaluationResults"/> that provides the outcome of the evaluation.</returns>
+        </member>
+        <member name="M:Json.Schema.JsonSchemaBuilderExtensions.Validate(Json.Schema.JsonSchemaBuilder,System.Text.Json.Nodes.JsonNode,Json.Schema.EvaluationOptions)">
+            <summary>
+            Convenience method that builds and evaluates with a single call.
+            </summary>
+            <param name="builder">The builder.</param>
+            <param name="root">The root instance.</param>
+            <param name="options">The options to use for this evaluation.</param>
+            <returns>A <see cref="T:Json.Schema.EvaluationResults"/> that provides the outcome of the evaluation.</returns>
+        </member>
+        <member name="T:Json.Schema.JsonSchemaException">
+            <summary>
+            Thrown when a schema is invalid or cannot be processed with the current configuration.
+            </summary>
+        </member>
+        <member name="M:Json.Schema.JsonSchemaException.#ctor(System.String)">
+            <summary>
+            Creates a new instance of the <see cref="T:Json.Schema.JsonSchemaException"/> type.
+            </summary>
+            <param name="message">The message that describes the error.</param>
         </member>
         <member name="T:Json.Schema.JsonSchemaExtensions">
             <summary>
             Some extensions for <see cref="T:Json.Schema.JsonSchema"/>
             </summary>
         </member>
-        <member name="M:Json.Schema.JsonSchemaExtensions.Validate(Json.Schema.JsonSchema,System.Text.Json.JsonDocument,Json.Schema.ValidationOptions)">
+        <member name="M:Json.Schema.JsonSchemaExtensions.Evaluate(Json.Schema.JsonSchema,System.Text.Json.JsonDocument,Json.Schema.EvaluationOptions)">
             <summary>
-            Extends <see cref="M:Json.Schema.JsonSchema.Validate(System.Text.Json.Nodes.JsonNode,Json.Schema.ValidationOptions)"/> to take <see cref="T:System.Text.Json.JsonDocument"/>.
+            Extends <see cref="M:Json.Schema.JsonSchema.Evaluate(System.Text.Json.Nodes.JsonNode,Json.Schema.EvaluationOptions)"/> to take <see cref="T:System.Text.Json.JsonDocument"/>.
             </summary>
             <param name="jsonSchema">The schema.</param>
-            <param name="jsonDocument">Document to be validated.</param>
-            <param name="options">The options to use for this validation.</param>
-            <returns>A <see cref="T:Json.Schema.ValidationResults"/> that provides the outcome of the validation.</returns>
+            <param name="jsonDocument">Instance to be evaluated.</param>
+            <param name="options">The options to use for this evaluation.</param>
+            <returns>A <see cref="T:Json.Schema.EvaluationResults"/> that provides the outcome of the evaluation.</returns>
         </member>
-        <member name="M:Json.Schema.JsonSchemaExtensions.Validate(Json.Schema.JsonSchema,System.Text.Json.JsonElement,Json.Schema.ValidationOptions)">
+        <member name="M:Json.Schema.JsonSchemaExtensions.Evaluate(Json.Schema.JsonSchema,System.Text.Json.JsonElement,Json.Schema.EvaluationOptions)">
             <summary>
-            Extends <see cref="M:Json.Schema.JsonSchema.Validate(System.Text.Json.Nodes.JsonNode,Json.Schema.ValidationOptions)"/> to take <see cref="T:System.Text.Json.JsonElement"/>.
+            Extends <see cref="M:Json.Schema.JsonSchema.Evaluate(System.Text.Json.Nodes.JsonNode,Json.Schema.EvaluationOptions)"/> to take <see cref="T:System.Text.Json.JsonElement"/>.
             </summary>
             <param name="jsonSchema">The schema.</param>
-            <param name="jsonElement">Element to be validated.</param>
-            <param name="options">The options to use for this validation.</param>
-            <returns>A <see cref="T:Json.Schema.ValidationResults"/> that provides the outcome of the validation.</returns>
+            <param name="jsonElement">Instance to be evaluated.</param>
+            <param name="options">The options to use for this evaluation.</param>
+            <returns>A <see cref="T:Json.Schema.EvaluationResults"/> that provides the outcome of the evaluation.</returns>
+        </member>
+        <member name="M:Json.Schema.JsonSchemaExtensions.Validate(Json.Schema.JsonSchema,System.Text.Json.Nodes.JsonNode,Json.Schema.EvaluationOptions)">
+            <summary>
+            Extends <see cref="M:Json.Schema.JsonSchema.Evaluate(System.Text.Json.Nodes.JsonNode,Json.Schema.EvaluationOptions)"/> to take <see cref="T:System.Text.Json.JsonDocument"/>.
+            </summary>
+            <param name="jsonSchema">The schema.</param>
+            <param name="jsonNode">Instance to be evaluated.</param>
+            <param name="options">The options to use for this evaluation.</param>
+            <returns>A <see cref="T:Json.Schema.EvaluationResults"/> that provides the outcome of the evaluation.</returns>
+        </member>
+        <member name="M:Json.Schema.JsonSchemaExtensions.Validate(Json.Schema.JsonSchema,System.Text.Json.JsonDocument,Json.Schema.EvaluationOptions)">
+            <summary>
+            Extends <see cref="M:Json.Schema.JsonSchema.Evaluate(System.Text.Json.Nodes.JsonNode,Json.Schema.EvaluationOptions)"/> to take <see cref="T:System.Text.Json.JsonDocument"/>.
+            </summary>
+            <param name="jsonSchema">The schema.</param>
+            <param name="jsonDocument">Instance to be evaluated.</param>
+            <param name="options">The options to use for this evaluation.</param>
+            <returns>A <see cref="T:Json.Schema.EvaluationResults"/> that provides the outcome of the evaluation.</returns>
+        </member>
+        <member name="M:Json.Schema.JsonSchemaExtensions.Validate(Json.Schema.JsonSchema,System.Text.Json.JsonElement,Json.Schema.EvaluationOptions)">
+            <summary>
+            Extends <see cref="M:Json.Schema.JsonSchema.Evaluate(System.Text.Json.Nodes.JsonNode,Json.Schema.EvaluationOptions)"/> to take <see cref="T:System.Text.Json.JsonElement"/>.
+            </summary>
+            <param name="jsonSchema">The schema.</param>
+            <param name="jsonElement">Instance to be evaluated.</param>
+            <param name="options">The options to use for this evaluation.</param>
+            <returns>A <see cref="T:Json.Schema.EvaluationResults"/> that provides the outcome of the evaluation.</returns>
         </member>
         <member name="T:Json.Schema.KeywordExtensions">
             <summary>
@@ -2889,6 +3412,15 @@
             <exception cref="T:System.ArgumentNullException"><paramref name="keyword"/> is null.</exception>
             <exception cref="T:System.InvalidOperationException">The keyword does not carry the <see cref="T:Json.Schema.SchemaKeywordAttribute"/>.</exception>
         </member>
+        <member name="M:Json.Schema.KeywordExtensions.Keyword(System.Type)">
+            <summary>
+            Gets the keyword string.
+            </summary>
+            <param name="keywordType">The keyword type.</param>
+            <returns>The keyword string.</returns>
+            <exception cref="T:System.ArgumentNullException"><paramref name="keywordType"/> is null.</exception>
+            <exception cref="T:System.InvalidOperationException">The keyword does not carry the <see cref="T:Json.Schema.SchemaKeywordAttribute"/>.</exception>
+        </member>
         <member name="M:Json.Schema.KeywordExtensions.Priority(Json.Schema.IJsonSchemaKeyword)">
             <summary>
             Gets the keyword priority.
@@ -2896,76 +3428,71 @@
             <param name="keyword">The keyword.</param>
             <returns>The priority.</returns>
         </member>
-        <member name="M:Json.Schema.KeywordExtensions.SupportsDraft(Json.Schema.IJsonSchemaKeyword,Json.Schema.Draft)">
+        <member name="M:Json.Schema.KeywordExtensions.SupportsVersion(Json.Schema.IJsonSchemaKeyword,Json.Schema.SpecVersion)">
             <summary>
-            Determines if a keyword is declared by a given draft of the JSON Schema specification.
+            Determines if a keyword is declared by a given version of the JSON Schema specification.
             </summary>
             <param name="keyword">The keyword.</param>
-            <param name="draft">The queried draft.</param>
-            <returns>true if the keyword is supported by the draft; false otherwise</returns>
+            <param name="version">The queried version.</param>
+            <returns>true if the keyword is supported by the version; false otherwise</returns>
             <exception cref="T:System.ArgumentNullException">Thrown if <paramref name="keyword"/> is null.</exception>
-            <exception cref="T:System.InvalidOperationException">Thrown if the keyword has no <see cref="T:Json.Schema.SchemaDraftAttribute"/> declarations.</exception>
+            <exception cref="T:System.InvalidOperationException">Thrown if the keyword has no <see cref="T:Json.Schema.SchemaSpecVersionAttribute"/> declarations.</exception>
         </member>
-        <member name="M:Json.Schema.KeywordExtensions.IsApplicator(Json.Schema.IJsonSchemaKeyword)">
+        <member name="M:Json.Schema.KeywordExtensions.VersionsSupported(Json.Schema.IJsonSchemaKeyword)">
             <summary>
-            Gets whether the keyword is an applicator (carries the <see cref="T:Json.Schema.ApplicatorAttribute"/> attribute).
+            Gets the specification versions supported by a keyword.
             </summary>
             <param name="keyword">The keyword.</param>
-            <returns>`true` if the keyword is an applicator; `false` otherwise.</returns>
-        </member>
-        <member name="M:Json.Schema.KeywordExtensions.GetSubschemas(Json.Schema.IJsonSchemaKeyword)">
-            <summary>
-            Gets all immediate subschemas for a keyword.
-            </summary>
-            <param name="keyword">The keyword.</param>
-            <returns>An `IEnumerable&lt;JsonSchema&gt;`.</returns>
+            <returns>The specification versions as a single flags value.</returns>
+            <exception cref="T:System.ArgumentNullException">Thrown if <paramref name="keyword"/> is null.</exception>
+            <exception cref="T:System.InvalidOperationException">Thrown if the keyword has no <see cref="T:Json.Schema.SchemaSpecVersionAttribute"/> declarations.</exception>
         </member>
         <member name="T:Json.Schema.LogExtensions">
             <summary>
             Provides common log messages.
             </summary>
         </member>
-        <member name="M:Json.Schema.LogExtensions.Log(Json.Schema.ValidationContext,System.Func{System.String})">
+        <member name="M:Json.Schema.LogExtensions.Log(Json.Schema.EvaluationContext,System.Func{System.String})">
             <summary>
             Logs a message.
             </summary>
-            <param name="context">The validation context.</param>
+            <param name="context">The evaluation context.</param>
             <param name="message">The message.</param>
         </member>
-        <member name="M:Json.Schema.LogExtensions.EnterKeyword(Json.Schema.ValidationContext,System.String)">
+        <member name="M:Json.Schema.LogExtensions.EnterKeyword(Json.Schema.EvaluationContext,System.String)">
             <summary>
             Adds a message to indicate a keyword has begun processing.  Increments indention.
             </summary>
-            <param name="context">The validation context.</param>
+            <param name="context">The evaluation context.</param>
             <param name="keyword">The keyword name</param>
         </member>
-        <member name="M:Json.Schema.LogExtensions.ExitKeyword(Json.Schema.ValidationContext,System.String)">
+        <member name="M:Json.Schema.LogExtensions.ExitKeyword(Json.Schema.EvaluationContext,System.String)">
             <summary>
             Adds a message to indicate a keyword has finished processing.  Decrements indention.
             </summary>
-            <param name="context">The validation context.</param>
+            <param name="context">The evaluation context.</param>
             <param name="keyword">The keyword name</param>
         </member>
-        <member name="M:Json.Schema.LogExtensions.ExitKeyword(Json.Schema.ValidationContext,System.String,System.Boolean)">
+        <member name="M:Json.Schema.LogExtensions.ExitKeyword(Json.Schema.EvaluationContext,System.String,System.Boolean)">
             <summary>
             Adds a message to indicate a keyword has finished processing.  Decrements indention.
             </summary>
-            <param name="context">The validation context.</param>
+            <param name="context">The evaluation context.</param>
             <param name="keyword">The keyword name</param>
             <param name="valid">Whether the validation was successful</param>
         </member>
-        <member name="M:Json.Schema.LogExtensions.WrongValueKind(Json.Schema.ValidationContext,Json.Schema.SchemaValueType)">
+        <member name="M:Json.Schema.LogExtensions.WrongValueKind(Json.Schema.EvaluationContext,Json.Schema.SchemaValueType)">
             <summary>
             Adds a message to indicate that a keyword doesn't apply and why.  Decrements indention.
             </summary>
-            <param name="context">The validation context.</param>
+            <param name="context">The evaluation context.</param>
             <param name="kind">The value kind</param>
         </member>
-        <member name="M:Json.Schema.LogExtensions.NotApplicable(Json.Schema.ValidationContext,System.Func{System.String})">
+        <member name="M:Json.Schema.LogExtensions.NotApplicable(Json.Schema.EvaluationContext,System.Func{System.String})">
             <summary>
             Adds a message to indicate that a keyword doesn't apply and why.  Decrements indention.
             </summary>
-            <param name="context">The validation context.</param>
+            <param name="context">The evaluation context.</param>
             <param name="reason">The reason</param>
         </member>
         <member name="M:Json.Schema.LogExtensions.GetValidityString(System.Boolean)">
@@ -2980,6 +3507,11 @@
             Handles `maxContains`.
             </summary>
         </member>
+        <member name="F:Json.Schema.MaxContainsKeyword.Name">
+            <summary>
+            The JSON name of the keyword.
+            </summary>
+        </member>
         <member name="P:Json.Schema.MaxContainsKeyword.Value">
             <summary>
             The maximum expected matching items.
@@ -2991,11 +3523,11 @@
             </summary>
             <param name="value">The maximum expected matching items.</param>
         </member>
-        <member name="M:Json.Schema.MaxContainsKeyword.Validate(Json.Schema.ValidationContext)">
+        <member name="M:Json.Schema.MaxContainsKeyword.Evaluate(Json.Schema.EvaluationContext)">
             <summary>
-            Provides validation for the keyword.
+            Performs evaluation for the keyword.
             </summary>
-            <param name="context">Contextual details for the validation process.</param>
+            <param name="context">Contextual details for the evaluation process.</param>
         </member>
         <member name="M:Json.Schema.MaxContainsKeyword.Equals(Json.Schema.MaxContainsKeyword)">
             <summary>Indicates whether the current object is equal to another object of the same type.</summary>
@@ -3016,6 +3548,11 @@
             Handles `maximum`.
             </summary>
         </member>
+        <member name="F:Json.Schema.MaximumKeyword.Name">
+            <summary>
+            The JSON name of the keyword.
+            </summary>
+        </member>
         <member name="P:Json.Schema.MaximumKeyword.Value">
             <summary>
             The maximum expected value.
@@ -3027,11 +3564,11 @@
             </summary>
             <param name="value">The maximum expected value.</param>
         </member>
-        <member name="M:Json.Schema.MaximumKeyword.Validate(Json.Schema.ValidationContext)">
+        <member name="M:Json.Schema.MaximumKeyword.Evaluate(Json.Schema.EvaluationContext)">
             <summary>
-            Provides validation for the keyword.
+            Performs evaluation for the keyword.
             </summary>
-            <param name="context">Contextual details for the validation process.</param>
+            <param name="context">Contextual details for the evaluation process.</param>
         </member>
         <member name="M:Json.Schema.MaximumKeyword.Equals(Json.Schema.MaximumKeyword)">
             <summary>Indicates whether the current object is equal to another object of the same type.</summary>
@@ -3052,6 +3589,11 @@
             Handles `maxItems`.
             </summary>
         </member>
+        <member name="F:Json.Schema.MaxItemsKeyword.Name">
+            <summary>
+            The JSON name of the keyword.
+            </summary>
+        </member>
         <member name="P:Json.Schema.MaxItemsKeyword.Value">
             <summary>
             The expected maximum number of items.
@@ -3063,11 +3605,11 @@
             </summary>
             <param name="value">The expected maximum number of items.</param>
         </member>
-        <member name="M:Json.Schema.MaxItemsKeyword.Validate(Json.Schema.ValidationContext)">
+        <member name="M:Json.Schema.MaxItemsKeyword.Evaluate(Json.Schema.EvaluationContext)">
             <summary>
-            Provides validation for the keyword.
+            Performs evaluation for the keyword.
             </summary>
-            <param name="context">Contextual details for the validation process.</param>
+            <param name="context">Contextual details for the evaluation process.</param>
         </member>
         <member name="M:Json.Schema.MaxItemsKeyword.Equals(Json.Schema.MaxItemsKeyword)">
             <summary>Indicates whether the current object is equal to another object of the same type.</summary>
@@ -3088,6 +3630,11 @@
             Handles `maxLength`.
             </summary>
         </member>
+        <member name="F:Json.Schema.MaxLengthKeyword.Name">
+            <summary>
+            The JSON name of the keyword.
+            </summary>
+        </member>
         <member name="P:Json.Schema.MaxLengthKeyword.Value">
             <summary>
             The maximum expected string length.
@@ -3099,11 +3646,11 @@
             </summary>
             <param name="value">The maximum expected string length.</param>
         </member>
-        <member name="M:Json.Schema.MaxLengthKeyword.Validate(Json.Schema.ValidationContext)">
+        <member name="M:Json.Schema.MaxLengthKeyword.Evaluate(Json.Schema.EvaluationContext)">
             <summary>
-            Provides validation for the keyword.
+            Performs evaluation for the keyword.
             </summary>
-            <param name="context">Contextual details for the validation process.</param>
+            <param name="context">Contextual details for the evaluation process.</param>
         </member>
         <member name="M:Json.Schema.MaxLengthKeyword.Equals(Json.Schema.MaxLengthKeyword)">
             <summary>Indicates whether the current object is equal to another object of the same type.</summary>
@@ -3124,6 +3671,11 @@
             Handles `maxProperties`.
             </summary>
         </member>
+        <member name="F:Json.Schema.MaxPropertiesKeyword.Name">
+            <summary>
+            The JSON name of the keyword.
+            </summary>
+        </member>
         <member name="P:Json.Schema.MaxPropertiesKeyword.Value">
             <summary>
             The maximum expected number of properties.
@@ -3135,11 +3687,11 @@
             </summary>
             <param name="value">The maximum expected number of properties.</param>
         </member>
-        <member name="M:Json.Schema.MaxPropertiesKeyword.Validate(Json.Schema.ValidationContext)">
+        <member name="M:Json.Schema.MaxPropertiesKeyword.Evaluate(Json.Schema.EvaluationContext)">
             <summary>
-            Provides validation for the keyword.
+            Performs evaluation for the keyword.
             </summary>
-            <param name="context">Contextual details for the validation process.</param>
+            <param name="context">Contextual details for the evaluation process.</param>
         </member>
         <member name="M:Json.Schema.MaxPropertiesKeyword.Equals(Json.Schema.MaxPropertiesKeyword)">
             <summary>Indicates whether the current object is equal to another object of the same type.</summary>
@@ -3340,9 +3892,104 @@
             The Draft 7 Core meta-schema.
             </summary>
         </member>
+        <member name="F:Json.Schema.MetaSchemas.DraftNextId">
+            <summary>
+            The Draft 2020-12 meta-schema ID.
+            </summary>
+        </member>
+        <member name="F:Json.Schema.MetaSchemas.CoreNextId">
+            <summary>
+            The Draft 2020-12 Core meta-schema ID.
+            </summary>
+        </member>
+        <member name="F:Json.Schema.MetaSchemas.UnevaluatedNextId">
+            <summary>
+            The Draft 2020-12 Unevaluated meta-schema ID.
+            </summary>
+        </member>
+        <member name="F:Json.Schema.MetaSchemas.ApplicatorNextId">
+            <summary>
+            The Draft 2020-12 Applicator meta-schema ID.
+            </summary>
+        </member>
+        <member name="F:Json.Schema.MetaSchemas.ValidationNextId">
+            <summary>
+            The Draft 2020-12 Validation meta-schema ID.
+            </summary>
+        </member>
+        <member name="F:Json.Schema.MetaSchemas.MetadataNextId">
+            <summary>
+            The Draft 2020-12 Metadata meta-schema ID.
+            </summary>
+        </member>
+        <member name="F:Json.Schema.MetaSchemas.FormatAnnotationNextId">
+            <summary>
+            The Draft 2020-12 Format-Annotation meta-schema ID.
+            </summary>
+        </member>
+        <member name="F:Json.Schema.MetaSchemas.FormatAssertionNextId">
+            <summary>
+            The Draft 2020-12 Format-Assertion meta-schema ID.
+            </summary>
+        </member>
+        <member name="F:Json.Schema.MetaSchemas.ContentNextId">
+            <summary>
+            The Draft 2020-12 Content meta-schema ID.
+            </summary>
+        </member>
+        <member name="F:Json.Schema.MetaSchemas.DraftNext">
+            <summary>
+            The Draft 2020-12 meta-schema.
+            </summary>
+        </member>
+        <member name="F:Json.Schema.MetaSchemas.CoreNext">
+            <summary>
+            The Draft 2020-12 Core meta-schema.
+            </summary>
+        </member>
+        <member name="F:Json.Schema.MetaSchemas.UnevaluatedNext">
+            <summary>
+            The Draft 2020-12 Unevaluated meta-schema.
+            </summary>
+        </member>
+        <member name="F:Json.Schema.MetaSchemas.ApplicatorNext">
+            <summary>
+            The Draft 2020-12 Applicator meta-schema.
+            </summary>
+        </member>
+        <member name="F:Json.Schema.MetaSchemas.ValidationNext">
+            <summary>
+            The Draft 2020-12 Validation meta-schema.
+            </summary>
+        </member>
+        <member name="F:Json.Schema.MetaSchemas.MetadataNext">
+            <summary>
+            The Draft 2020-12 Metadata meta-schema.
+            </summary>
+        </member>
+        <member name="F:Json.Schema.MetaSchemas.FormatAnnotationNext">
+            <summary>
+            The Draft 2020-12 Format-Annotation meta-schema.
+            </summary>
+        </member>
+        <member name="F:Json.Schema.MetaSchemas.FormatAssertionNext">
+            <summary>
+            The Draft 2020-12 Format-Assertion meta-schema.
+            </summary>
+        </member>
+        <member name="F:Json.Schema.MetaSchemas.ContentNext">
+            <summary>
+            The Draft 2020-12 Content meta-schema.
+            </summary>
+        </member>
         <member name="T:Json.Schema.MinContainsKeyword">
             <summary>
             Handles `minContains`.
+            </summary>
+        </member>
+        <member name="F:Json.Schema.MinContainsKeyword.Name">
+            <summary>
+            The JSON name of the keyword.
             </summary>
         </member>
         <member name="P:Json.Schema.MinContainsKeyword.Value">
@@ -3356,11 +4003,11 @@
             </summary>
             <param name="value">The minimum expected matching items.</param>
         </member>
-        <member name="M:Json.Schema.MinContainsKeyword.Validate(Json.Schema.ValidationContext)">
+        <member name="M:Json.Schema.MinContainsKeyword.Evaluate(Json.Schema.EvaluationContext)">
             <summary>
-            Provides validation for the keyword.
+            Performs evaluation for the keyword.
             </summary>
-            <param name="context">Contextual details for the validation process.</param>
+            <param name="context">Contextual details for the evaluation process.</param>
         </member>
         <member name="M:Json.Schema.MinContainsKeyword.Equals(Json.Schema.MinContainsKeyword)">
             <summary>Indicates whether the current object is equal to another object of the same type.</summary>
@@ -3381,6 +4028,11 @@
             Handles `minimum`.
             </summary>
         </member>
+        <member name="F:Json.Schema.MinimumKeyword.Name">
+            <summary>
+            The JSON name of the keyword.
+            </summary>
+        </member>
         <member name="P:Json.Schema.MinimumKeyword.Value">
             <summary>
             The minimum expected value.
@@ -3392,11 +4044,11 @@
             </summary>
             <param name="value">The minimum expected value.</param>
         </member>
-        <member name="M:Json.Schema.MinimumKeyword.Validate(Json.Schema.ValidationContext)">
+        <member name="M:Json.Schema.MinimumKeyword.Evaluate(Json.Schema.EvaluationContext)">
             <summary>
-            Provides validation for the keyword.S
+            Performs evaluation for the keyword.S
             </summary>
-            <param name="context">Contextual details for the validation process.</param>
+            <param name="context">Contextual details for the evaluation process.</param>
         </member>
         <member name="M:Json.Schema.MinimumKeyword.Equals(Json.Schema.MinimumKeyword)">
             <summary>Indicates whether the current object is equal to another object of the same type.</summary>
@@ -3417,6 +4069,11 @@
             Handles `minItems`.
             </summary>
         </member>
+        <member name="F:Json.Schema.MinItemsKeyword.Name">
+            <summary>
+            The JSON name of the keyword.
+            </summary>
+        </member>
         <member name="P:Json.Schema.MinItemsKeyword.Value">
             <summary>
             The expected minimum number of items.
@@ -3428,11 +4085,11 @@
             </summary>
             <param name="value">The expected minimum number of items.</param>
         </member>
-        <member name="M:Json.Schema.MinItemsKeyword.Validate(Json.Schema.ValidationContext)">
+        <member name="M:Json.Schema.MinItemsKeyword.Evaluate(Json.Schema.EvaluationContext)">
             <summary>
-            Provides validation for the keyword.
+            Performs evaluation for the keyword.
             </summary>
-            <param name="context">Contextual details for the validation process.</param>
+            <param name="context">Contextual details for the evaluation process.</param>
         </member>
         <member name="M:Json.Schema.MinItemsKeyword.Equals(Json.Schema.MinItemsKeyword)">
             <summary>Indicates whether the current object is equal to another object of the same type.</summary>
@@ -3453,6 +4110,11 @@
             Handles `minLength`.
             </summary>
         </member>
+        <member name="F:Json.Schema.MinLengthKeyword.Name">
+            <summary>
+            The JSON name of the keyword.
+            </summary>
+        </member>
         <member name="P:Json.Schema.MinLengthKeyword.Value">
             <summary>
             The minimum expected string length.
@@ -3464,11 +4126,11 @@
             </summary>
             <param name="value">The minimum expected string length.</param>
         </member>
-        <member name="M:Json.Schema.MinLengthKeyword.Validate(Json.Schema.ValidationContext)">
+        <member name="M:Json.Schema.MinLengthKeyword.Evaluate(Json.Schema.EvaluationContext)">
             <summary>
-            Provides validation for the keyword.
+            Performs evaluation for the keyword.
             </summary>
-            <param name="context">Contextual details for the validation process.</param>
+            <param name="context">Contextual details for the evaluation process.</param>
         </member>
         <member name="M:Json.Schema.MinLengthKeyword.Equals(Json.Schema.MinLengthKeyword)">
             <summary>Indicates whether the current object is equal to another object of the same type.</summary>
@@ -3489,6 +4151,11 @@
             Handles `minProperties`.
             </summary>
         </member>
+        <member name="F:Json.Schema.MinPropertiesKeyword.Name">
+            <summary>
+            The JSON name of the keyword.
+            </summary>
+        </member>
         <member name="P:Json.Schema.MinPropertiesKeyword.Value">
             <summary>
             The minimum expected number of properties.
@@ -3500,11 +4167,11 @@
             </summary>
             <param name="value">The minimum expected number of properties.</param>
         </member>
-        <member name="M:Json.Schema.MinPropertiesKeyword.Validate(Json.Schema.ValidationContext)">
+        <member name="M:Json.Schema.MinPropertiesKeyword.Evaluate(Json.Schema.EvaluationContext)">
             <summary>
-            Provides validation for the keyword.
+            Performs evaluation for the keyword.
             </summary>
-            <param name="context">Contextual details for the validation process.</param>
+            <param name="context">Contextual details for the evaluation process.</param>
         </member>
         <member name="M:Json.Schema.MinPropertiesKeyword.Equals(Json.Schema.MinPropertiesKeyword)">
             <summary>Indicates whether the current object is equal to another object of the same type.</summary>
@@ -3525,6 +4192,11 @@
             Handles `multipleOf`.
             </summary>
         </member>
+        <member name="F:Json.Schema.MultipleOfKeyword.Name">
+            <summary>
+            The JSON name of the keyword.
+            </summary>
+        </member>
         <member name="P:Json.Schema.MultipleOfKeyword.Value">
             <summary>
             The expected divisor of a value.
@@ -3536,11 +4208,11 @@
             </summary>
             <param name="value">The expected divisor of a value.</param>
         </member>
-        <member name="M:Json.Schema.MultipleOfKeyword.Validate(Json.Schema.ValidationContext)">
+        <member name="M:Json.Schema.MultipleOfKeyword.Evaluate(Json.Schema.EvaluationContext)">
             <summary>
-            Provides validation for the keyword.
+            Performs evaluation for the keyword.
             </summary>
-            <param name="context">Contextual details for the validation process.</param>
+            <param name="context">Contextual details for the evaluation process.</param>
         </member>
         <member name="M:Json.Schema.MultipleOfKeyword.Equals(Json.Schema.MultipleOfKeyword)">
             <summary>Indicates whether the current object is equal to another object of the same type.</summary>
@@ -3561,6 +4233,11 @@
             Handles `not`.
             </summary>
         </member>
+        <member name="F:Json.Schema.NotKeyword.Name">
+            <summary>
+            The JSON name of the keyword.
+            </summary>
+        </member>
         <member name="P:Json.Schema.NotKeyword.Schema">
             <summary>
             The schema to not match.
@@ -3572,11 +4249,11 @@
             </summary>
             <param name="value">The schema to not match.</param>
         </member>
-        <member name="M:Json.Schema.NotKeyword.Validate(Json.Schema.ValidationContext)">
+        <member name="M:Json.Schema.NotKeyword.Evaluate(Json.Schema.EvaluationContext)">
             <summary>
-            Provides validation for the keyword.
+            Performs evaluation for the keyword.
             </summary>
-            <param name="context">Contextual details for the validation process.</param>
+            <param name="context">Contextual details for the evaluation process.</param>
         </member>
         <member name="M:Json.Schema.NotKeyword.Equals(Json.Schema.NotKeyword)">
             <summary>Indicates whether the current object is equal to another object of the same type.</summary>
@@ -3597,6 +4274,11 @@
             Handles `oneOf`.
             </summary>
         </member>
+        <member name="F:Json.Schema.OneOfKeyword.Name">
+            <summary>
+            The JSON name of the keyword.
+            </summary>
+        </member>
         <member name="P:Json.Schema.OneOfKeyword.Schemas">
             <summary>
             The keywords schema collection.
@@ -3614,11 +4296,11 @@
             </summary>
             <param name="values">The keywords schema collection.</param>
         </member>
-        <member name="M:Json.Schema.OneOfKeyword.Validate(Json.Schema.ValidationContext)">
+        <member name="M:Json.Schema.OneOfKeyword.Evaluate(Json.Schema.EvaluationContext)">
             <summary>
-            Provides validation for the keyword.
+            Performs evaluation for the keyword.
             </summary>
-            <param name="context">Contextual details for the validation process.</param>
+            <param name="context">Contextual details for the evaluation process.</param>
         </member>
         <member name="M:Json.Schema.OneOfKeyword.Equals(Json.Schema.OneOfKeyword)">
             <summary>Indicates whether the current object is equal to another object of the same type.</summary>
@@ -3644,17 +4326,12 @@
             Indicates that only a single pass/fail node will be returned.
             </summary>
         </member>
-        <member name="F:Json.Schema.OutputFormat.Basic">
+        <member name="F:Json.Schema.OutputFormat.List">
             <summary>
             Indicates that all nodes will be listed as children of the top node.
             </summary>
         </member>
-        <member name="F:Json.Schema.OutputFormat.Detailed">
-            <summary>
-            Indicates that nodes will be organized in a condensed structure that mimicks the schema.
-            </summary>
-        </member>
-        <member name="F:Json.Schema.OutputFormat.Verbose">
+        <member name="F:Json.Schema.OutputFormat.Hierarchical">
             <summary>
             Indicates that nodes will match the structure of the schema.
             </summary>
@@ -3662,6 +4339,11 @@
         <member name="T:Json.Schema.PatternKeyword">
             <summary>
             Handles `pattern`.
+            </summary>
+        </member>
+        <member name="F:Json.Schema.PatternKeyword.Name">
+            <summary>
+            The JSON name of the keyword.
             </summary>
         </member>
         <member name="P:Json.Schema.PatternKeyword.Value">
@@ -3683,11 +4365,11 @@
             </summary>
             <param name="value">The regular expression.</param>
         </member>
-        <member name="M:Json.Schema.PatternKeyword.Validate(Json.Schema.ValidationContext)">
+        <member name="M:Json.Schema.PatternKeyword.Evaluate(Json.Schema.EvaluationContext)">
             <summary>
-            Provides validation for the keyword.
+            Performs evaluation for the keyword.
             </summary>
-            <param name="context">Contextual details for the validation process.</param>
+            <param name="context">Contextual details for the evaluation process.</param>
         </member>
         <member name="M:Json.Schema.PatternKeyword.Equals(Json.Schema.PatternKeyword)">
             <summary>Indicates whether the current object is equal to another object of the same type.</summary>
@@ -3706,6 +4388,11 @@
         <member name="T:Json.Schema.PatternPropertiesKeyword">
             <summary>
             Handles `patternProperties`.
+            </summary>
+        </member>
+        <member name="F:Json.Schema.PatternPropertiesKeyword.Name">
+            <summary>
+            The JSON name of the keyword.
             </summary>
         </member>
         <member name="P:Json.Schema.PatternPropertiesKeyword.Patterns">
@@ -3727,11 +4414,11 @@
             </summary>
             <param name="values">The pattern-keyed schemas.</param>
         </member>
-        <member name="M:Json.Schema.PatternPropertiesKeyword.Validate(Json.Schema.ValidationContext)">
+        <member name="M:Json.Schema.PatternPropertiesKeyword.Evaluate(Json.Schema.EvaluationContext)">
             <summary>
-            Provides validation for the keyword.
+            Performs evaluation for the keyword.
             </summary>
-            <param name="context">Contextual details for the validation process.</param>
+            <param name="context">Contextual details for the evaluation process.</param>
         </member>
         <member name="M:Json.Schema.PatternPropertiesKeyword.Equals(Json.Schema.PatternPropertiesKeyword)">
             <summary>Indicates whether the current object is equal to another object of the same type.</summary>
@@ -3787,6 +4474,11 @@
             Handles `items`.
             </summary>
         </member>
+        <member name="F:Json.Schema.PrefixItemsKeyword.Name">
+            <summary>
+            The JSON name of the keyword.
+            </summary>
+        </member>
         <member name="P:Json.Schema.PrefixItemsKeyword.ArraySchemas">
             <summary>
             The collection of schemas for the "schema array" form.
@@ -3808,11 +4500,11 @@
             </summary>
             <param name="values">The collection of schemas for the "schema array" form.</param>
         </member>
-        <member name="M:Json.Schema.PrefixItemsKeyword.Validate(Json.Schema.ValidationContext)">
+        <member name="M:Json.Schema.PrefixItemsKeyword.Evaluate(Json.Schema.EvaluationContext)">
             <summary>
-            Provides validation for the keyword.
+            Performs evaluation for the keyword.
             </summary>
-            <param name="context">Contextual details for the validation process.</param>
+            <param name="context">Contextual details for the evaluation process.</param>
         </member>
         <member name="M:Json.Schema.PrefixItemsKeyword.Equals(Json.Schema.PrefixItemsKeyword)">
             <summary>Indicates whether the current object is equal to another object of the same type.</summary>
@@ -3833,6 +4525,11 @@
             Handles `properties`.
             </summary>
         </member>
+        <member name="F:Json.Schema.PropertiesKeyword.Name">
+            <summary>
+            The JSON name of the keyword.
+            </summary>
+        </member>
         <member name="P:Json.Schema.PropertiesKeyword.Properties">
             <summary>
             The property schemas.
@@ -3844,11 +4541,11 @@
             </summary>
             <param name="values">The property schemas.</param>
         </member>
-        <member name="M:Json.Schema.PropertiesKeyword.Validate(Json.Schema.ValidationContext)">
+        <member name="M:Json.Schema.PropertiesKeyword.Evaluate(Json.Schema.EvaluationContext)">
             <summary>
-            Provides validation for the keyword.
+            Performs evaluation for the keyword.
             </summary>
-            <param name="context">Contextual details for the validation process.</param>
+            <param name="context">Contextual details for the evaluation process.</param>
         </member>
         <member name="M:Json.Schema.PropertiesKeyword.Equals(Json.Schema.PropertiesKeyword)">
             <summary>Indicates whether the current object is equal to another object of the same type.</summary>
@@ -3864,9 +4561,109 @@
             <summary>Serves as the default hash function.</summary>
             <returns>A hash code for the current object.</returns>
         </member>
+        <member name="T:Json.Schema.PropertyDependenciesKeyword">
+            <summary>
+            Handles the `propertyDependencies` keyword.
+            </summary>
+        </member>
+        <member name="F:Json.Schema.PropertyDependenciesKeyword.Name">
+            <summary>
+            The JSON name of the keyword.
+            </summary>
+        </member>
+        <member name="P:Json.Schema.PropertyDependenciesKeyword.Dependencies">
+            <summary>
+            Gets the collection of dependencies.
+            </summary>
+        </member>
+        <member name="M:Json.Schema.PropertyDependenciesKeyword.#ctor(System.Collections.Generic.IReadOnlyDictionary{System.String,Json.Schema.PropertyDependency})">
+            <summary>
+            Creates a new instance of the <see cref="T:Json.Schema.PropertyDependenciesKeyword"/>.
+            </summary>
+            <param name="dependencies">The collection of dependencies.</param>
+        </member>
+        <member name="M:Json.Schema.PropertyDependenciesKeyword.Evaluate(Json.Schema.EvaluationContext)">
+            <summary>
+            Performs evaluation for the keyword.
+            </summary>
+            <param name="context">Contextual details for the evaluation process.</param>
+        </member>
+        <member name="M:Json.Schema.PropertyDependenciesKeyword.Equals(Json.Schema.PropertyDependenciesKeyword)">
+            <summary>Indicates whether the current object is equal to another object of the same type.</summary>
+            <param name="other">An object to compare with this object.</param>
+            <returns>true if the current object is equal to the <paramref name="other">other</paramref> parameter; otherwise, false.</returns>
+        </member>
+        <member name="M:Json.Schema.PropertyDependenciesKeyword.Equals(System.Object)">
+            <summary>Determines whether the specified object is equal to the current object.</summary>
+            <param name="obj">The object to compare with the current object.</param>
+            <returns>true if the specified object  is equal to the current object; otherwise, false.</returns>
+        </member>
+        <member name="M:Json.Schema.PropertyDependenciesKeyword.GetHashCode">
+            <summary>Serves as the default hash function.</summary>
+            <returns>A hash code for the current object.</returns>
+        </member>
+        <member name="T:Json.Schema.PropertyDependency">
+            <summary>
+            Represents a single entry in the `propertyDependencies` keyword.
+            </summary>
+        </member>
+        <member name="P:Json.Schema.PropertyDependency.Schemas">
+            <summary>
+            Gets the collection of value-dependent schemas for this property.
+            </summary>
+        </member>
+        <member name="M:Json.Schema.PropertyDependency.#ctor(System.Collections.Generic.IReadOnlyDictionary{System.String,Json.Schema.JsonSchema})">
+            <summary>
+            Creates a new instance of <see cref="T:Json.Schema.PropertyDependency"/>.
+            </summary>
+            <param name="schemas">The collection of value-dependent schemas for this property</param>
+        </member>
+        <member name="M:Json.Schema.PropertyDependency.#ctor(System.ValueTuple{System.String,Json.Schema.JsonSchema}[])">
+            <summary>
+            Creates a new instance of <see cref="T:Json.Schema.PropertyDependency"/>.
+            </summary>
+            <param name="schemas">The collection of value-dependent schemas for this property</param>
+        </member>
+        <member name="M:Json.Schema.PropertyDependency.Equals(Json.Schema.PropertyDependency)">
+            <summary>Indicates whether the current object is equal to another object of the same type.</summary>
+            <param name="other">An object to compare with this object.</param>
+            <returns>true if the current object is equal to the <paramref name="other">other</paramref> parameter; otherwise, false.</returns>
+        </member>
+        <member name="M:Json.Schema.PropertyDependency.Equals(System.Object)">
+            <summary>Determines whether the specified object is equal to the current object.</summary>
+            <param name="obj">The object to compare with the current object.</param>
+            <returns>true if the specified object  is equal to the current object; otherwise, false.</returns>
+        </member>
+        <member name="M:Json.Schema.PropertyDependency.GetHashCode">
+            <summary>Serves as the default hash function.</summary>
+            <returns>A hash code for the current object.</returns>
+        </member>
+        <member name="M:Json.Schema.PropertyDependency.op_Implicit(System.Collections.Generic.Dictionary{System.String,Json.Schema.JsonSchema})~Json.Schema.PropertyDependency">
+            <summary>
+            Implicitly converts a keyed collection of <see cref="T:Json.Schema.JsonSchema"/> to a property dependency.
+            </summary>
+            <param name="dependency"></param>
+        </member>
+        <member name="M:Json.Schema.PropertyDependency.op_Implicit(System.ValueTuple{System.String,Json.Schema.JsonSchema}[])~Json.Schema.PropertyDependency">
+            <summary>
+            Implicitly converts a keyed collection of <see cref="T:Json.Schema.JsonSchema"/> to a property dependency.
+            </summary>
+            <param name="dependency"></param>
+        </member>
+        <member name="M:Json.Schema.PropertyDependency.op_Implicit(System.ValueTuple{System.String,Json.Schema.JsonSchemaBuilder}[])~Json.Schema.PropertyDependency">
+            <summary>
+            Implicitly converts a keyed collection of <see cref="T:Json.Schema.JsonSchema"/> to a property dependency.
+            </summary>
+            <param name="dependency"></param>
+        </member>
         <member name="T:Json.Schema.PropertyNamesKeyword">
             <summary>
             Handles `propertyNames`.
+            </summary>
+        </member>
+        <member name="F:Json.Schema.PropertyNamesKeyword.Name">
+            <summary>
+            The JSON name of the keyword.
             </summary>
         </member>
         <member name="P:Json.Schema.PropertyNamesKeyword.Schema">
@@ -3880,11 +4677,11 @@
             </summary>
             <param name="value">The schema to match.</param>
         </member>
-        <member name="M:Json.Schema.PropertyNamesKeyword.Validate(Json.Schema.ValidationContext)">
+        <member name="M:Json.Schema.PropertyNamesKeyword.Evaluate(Json.Schema.EvaluationContext)">
             <summary>
-            Provides validation for the keyword.
+            Performs evaluation for the keyword.
             </summary>
-            <param name="context">Contextual details for the validation process.</param>
+            <param name="context">Contextual details for the evaluation process.</param>
         </member>
         <member name="M:Json.Schema.PropertyNamesKeyword.Equals(Json.Schema.PropertyNamesKeyword)">
             <summary>Indicates whether the current object is equal to another object of the same type.</summary>
@@ -3905,6 +4702,11 @@
             Handles `readOnly`.
             </summary>
         </member>
+        <member name="F:Json.Schema.ReadOnlyKeyword.Name">
+            <summary>
+            The JSON name of the keyword.
+            </summary>
+        </member>
         <member name="P:Json.Schema.ReadOnlyKeyword.Value">
             <summary>
             Whether the instance is read-only.
@@ -3916,11 +4718,11 @@
             </summary>
             <param name="value">Whether the instance is read-only.</param>
         </member>
-        <member name="M:Json.Schema.ReadOnlyKeyword.Validate(Json.Schema.ValidationContext)">
+        <member name="M:Json.Schema.ReadOnlyKeyword.Evaluate(Json.Schema.EvaluationContext)">
             <summary>
-            Provides validation for the keyword.
+            Performs evaluation for the keyword.
             </summary>
-            <param name="context">Contextual details for the validation process.</param>
+            <param name="context">Contextual details for the evaluation process.</param>
         </member>
         <member name="M:Json.Schema.ReadOnlyKeyword.Equals(Json.Schema.ReadOnlyKeyword)">
             <summary>Indicates whether the current object is equal to another object of the same type.</summary>
@@ -3941,6 +4743,11 @@
             Handles `$recursiveAnchor`.
             </summary>
         </member>
+        <member name="F:Json.Schema.RecursiveAnchorKeyword.Name">
+            <summary>
+            The JSON name of the keyword.
+            </summary>
+        </member>
         <member name="P:Json.Schema.RecursiveAnchorKeyword.Value">
             <summary>
             Gets the value.
@@ -3952,11 +4759,11 @@
             </summary>
             <param name="value">The value.</param>
         </member>
-        <member name="M:Json.Schema.RecursiveAnchorKeyword.Validate(Json.Schema.ValidationContext)">
+        <member name="M:Json.Schema.RecursiveAnchorKeyword.Evaluate(Json.Schema.EvaluationContext)">
             <summary>
-            Provides validation for the keyword.
+            Performs evaluation for the keyword.
             </summary>
-            <param name="context">Contextual details for the validation process.</param>
+            <param name="context">Contextual details for the evaluation process.</param>
         </member>
         <member name="M:Json.Schema.RecursiveAnchorKeyword.Equals(Json.Schema.RecursiveAnchorKeyword)">
             <summary>Indicates whether the current object is equal to another object of the same type.</summary>
@@ -3977,6 +4784,11 @@
             Handles `$recursiveRef`.
             </summary>
         </member>
+        <member name="F:Json.Schema.RecursiveRefKeyword.Name">
+            <summary>
+            The JSON name of the keyword.
+            </summary>
+        </member>
         <member name="P:Json.Schema.RecursiveRefKeyword.Reference">
             <summary>
             The URI reference.
@@ -3988,11 +4800,11 @@
             </summary>
             <param name="value">The URI.</param>
         </member>
-        <member name="M:Json.Schema.RecursiveRefKeyword.Validate(Json.Schema.ValidationContext)">
+        <member name="M:Json.Schema.RecursiveRefKeyword.Evaluate(Json.Schema.EvaluationContext)">
             <summary>
-            Provides validation for the keyword.
+            Performs evaluation for the keyword.
             </summary>
-            <param name="context">Contextual details for the validation process.</param>
+            <param name="context">Contextual details for the evaluation process.</param>
         </member>
         <member name="M:Json.Schema.RecursiveRefKeyword.Equals(Json.Schema.RecursiveRefKeyword)">
             <summary>Indicates whether the current object is equal to another object of the same type.</summary>
@@ -4013,6 +4825,11 @@
             Handles `$ref`.
             </summary>
         </member>
+        <member name="F:Json.Schema.RefKeyword.Name">
+            <summary>
+            The JSON name of the keyword.
+            </summary>
+        </member>
         <member name="P:Json.Schema.RefKeyword.Reference">
             <summary>
             The URI reference.
@@ -4024,11 +4841,11 @@
             </summary>
             <param name="value">The URI reference.</param>
         </member>
-        <member name="M:Json.Schema.RefKeyword.Validate(Json.Schema.ValidationContext)">
+        <member name="M:Json.Schema.RefKeyword.Evaluate(Json.Schema.EvaluationContext)">
             <summary>
-            Provides validation for the keyword.
+            Performs evaluation for the keyword.
             </summary>
-            <param name="context">Contextual details for the validation process.</param>
+            <param name="context">Contextual details for the evaluation process.</param>
         </member>
         <member name="M:Json.Schema.RefKeyword.Equals(Json.Schema.RefKeyword)">
             <summary>Indicates whether the current object is equal to another object of the same type.</summary>
@@ -4069,6 +4886,11 @@
             Handles `requires`.
             </summary>
         </member>
+        <member name="F:Json.Schema.RequiredKeyword.Name">
+            <summary>
+            The JSON name of the keyword.
+            </summary>
+        </member>
         <member name="P:Json.Schema.RequiredKeyword.Properties">
             <summary>
             The required properties.
@@ -4086,11 +4908,11 @@
             </summary>
             <param name="values">The required properties.</param>
         </member>
-        <member name="M:Json.Schema.RequiredKeyword.Validate(Json.Schema.ValidationContext)">
+        <member name="M:Json.Schema.RequiredKeyword.Evaluate(Json.Schema.EvaluationContext)">
             <summary>
-            Provides validation for the keyword.
+            Performs evaluation for the keyword.
             </summary>
-            <param name="context">Contextual details for the validation process.</param>
+            <param name="context">Contextual details for the evaluation process.</param>
         </member>
         <member name="M:Json.Schema.RequiredKeyword.Equals(Json.Schema.RequiredKeyword)">
             <summary>Indicates whether the current object is equal to another object of the same type.</summary>
@@ -4106,25 +4928,14 @@
             <summary>Serves as the default hash function.</summary>
             <returns>A hash code for the current object.</returns>
         </member>
-        <member name="T:Json.Schema.SchemaDraftAttribute">
-            <summary>
-            Indicates which JSON Schema draft versions are supported by a keyword.
-            </summary>
-        </member>
-        <member name="P:Json.Schema.SchemaDraftAttribute.Draft">
-            <summary>
-            The supported draft.
-            </summary>
-        </member>
-        <member name="M:Json.Schema.SchemaDraftAttribute.#ctor(Json.Schema.Draft)">
-            <summary>
-            Creates a new <see cref="T:Json.Schema.SchemaDraftAttribute"/>.
-            </summary>
-            <param name="draft">The supported draft.</param>
-        </member>
         <member name="T:Json.Schema.SchemaKeyword">
             <summary>
             Handles `$schema`.
+            </summary>
+        </member>
+        <member name="F:Json.Schema.SchemaKeyword.Name">
+            <summary>
+            The JSON name of the keyword.
             </summary>
         </member>
         <member name="P:Json.Schema.SchemaKeyword.Schema">
@@ -4138,11 +4949,11 @@
             </summary>
             <param name="schema">The meta-schema ID.</param>
         </member>
-        <member name="M:Json.Schema.SchemaKeyword.Validate(Json.Schema.ValidationContext)">
+        <member name="M:Json.Schema.SchemaKeyword.Evaluate(Json.Schema.EvaluationContext)">
             <summary>
-            Provides validation for the keyword.
+            Performs evaluation for the keyword.
             </summary>
-            <param name="context">Contextual details for the validation process.</param>
+            <param name="context">Contextual details for the evaluation process.</param>
         </member>
         <member name="M:Json.Schema.SchemaKeyword.Equals(Json.Schema.SchemaKeyword)">
             <summary>Indicates whether the current object is equal to another object of the same type.</summary>
@@ -4256,24 +5067,31 @@
             <param name="uri">The URI ID of the schema..</param>
             <param name="schema">The schema.</param>
         </member>
-        <member name="M:Json.Schema.SchemaRegistry.RegisterAnchor(System.Uri,System.String,Json.Schema.JsonSchema)">
-            <summary>
-            Registers a schema by a named anchor.
-            </summary>
-            <param name="uri">The URI ID of the schema.</param>
-            <param name="anchor">The anchor name.</param>
-            <param name="schema">The schema.</param>
-        </member>
-        <member name="M:Json.Schema.SchemaRegistry.Get(System.Uri,System.String)">
+        <member name="M:Json.Schema.SchemaRegistry.Get(System.Uri)">
             <summary>
             Gets a schema by URI ID and/or anchor.
             </summary>
             <param name="uri">The URI ID.</param>
-            <param name="anchor">(optional) The anchor name.</param>
             <returns>
             The schema, if registered in either this or the global registry;4
             otherwise null.
             </returns>
+        </member>
+        <member name="T:Json.Schema.SchemaSpecVersionAttribute">
+            <summary>
+            Indicates which JSON Schema specification versions are supported by a keyword.
+            </summary>
+        </member>
+        <member name="P:Json.Schema.SchemaSpecVersionAttribute.Version">
+            <summary>
+            The supported version.
+            </summary>
+        </member>
+        <member name="M:Json.Schema.SchemaSpecVersionAttribute.#ctor(Json.Schema.SpecVersion)">
+            <summary>
+            Creates a new <see cref="T:Json.Schema.SchemaSpecVersionAttribute"/>.
+            </summary>
+            <param name="version">The supported version.</param>
         </member>
         <member name="T:Json.Schema.SchemaValueType">
             <summary>
@@ -4319,9 +5137,49 @@
             Indicates the value should be null.
             </summary>
         </member>
+        <member name="T:Json.Schema.SpecVersion">
+            <summary>
+            Enumerates the supported JSON Schema specification versions.
+            </summary>
+        </member>
+        <member name="F:Json.Schema.SpecVersion.Unspecified">
+            <summary>
+            The specification version to use should be determined by the collection of keywords.
+            </summary>
+        </member>
+        <member name="F:Json.Schema.SpecVersion.Draft6">
+            <summary>
+            JSON Schema Draft 6.
+            </summary>
+        </member>
+        <member name="F:Json.Schema.SpecVersion.Draft7">
+            <summary>
+            JSON Schema Draft 7.
+            </summary>
+        </member>
+        <member name="F:Json.Schema.SpecVersion.Draft201909">
+            <summary>
+            JSON Schema Draft 2019-09.
+            </summary>
+        </member>
+        <member name="F:Json.Schema.SpecVersion.Draft202012">
+            <summary>
+            JSON Schema Draft 2020-12.
+            </summary>
+        </member>
+        <member name="F:Json.Schema.SpecVersion.DraftNext">
+            <summary>
+            JSON Schema Draft Next.
+            </summary>
+        </member>
         <member name="T:Json.Schema.ThenKeyword">
             <summary>
             Handles `then`.
+            </summary>
+        </member>
+        <member name="F:Json.Schema.ThenKeyword.Name">
+            <summary>
+            The JSON name of the keyword.
             </summary>
         </member>
         <member name="P:Json.Schema.ThenKeyword.Schema">
@@ -4335,11 +5193,11 @@
             </summary>
             <param name="value">The schema to match.</param>
         </member>
-        <member name="M:Json.Schema.ThenKeyword.Validate(Json.Schema.ValidationContext)">
+        <member name="M:Json.Schema.ThenKeyword.Evaluate(Json.Schema.EvaluationContext)">
             <summary>
-            Provides validation for the keyword.
+            Performs evaluation for the keyword.
             </summary>
-            <param name="context">Contextual details for the validation process.</param>
+            <param name="context">Contextual details for the evaluation process.</param>
         </member>
         <member name="M:Json.Schema.ThenKeyword.Equals(Json.Schema.ThenKeyword)">
             <summary>Indicates whether the current object is equal to another object of the same type.</summary>
@@ -4360,6 +5218,11 @@
             Handles `title`.
             </summary>
         </member>
+        <member name="F:Json.Schema.TitleKeyword.Name">
+            <summary>
+            The JSON name of the keyword.
+            </summary>
+        </member>
         <member name="P:Json.Schema.TitleKeyword.Value">
             <summary>
             The title.
@@ -4371,11 +5234,11 @@
             </summary>
             <param name="value">The title.</param>
         </member>
-        <member name="M:Json.Schema.TitleKeyword.Validate(Json.Schema.ValidationContext)">
+        <member name="M:Json.Schema.TitleKeyword.Evaluate(Json.Schema.EvaluationContext)">
             <summary>
-            Provides validation for the keyword.
+            Performs evaluation for the keyword.
             </summary>
-            <param name="context">Contextual details for the validation process.</param>
+            <param name="context">Contextual details for the evaluation process.</param>
         </member>
         <member name="M:Json.Schema.TitleKeyword.Equals(Json.Schema.TitleKeyword)">
             <summary>Indicates whether the current object is equal to another object of the same type.</summary>
@@ -4394,6 +5257,11 @@
         <member name="T:Json.Schema.TypeKeyword">
             <summary>
             Handles `type`.
+            </summary>
+        </member>
+        <member name="F:Json.Schema.TypeKeyword.Name">
+            <summary>
+            The JSON name of the keyword.
             </summary>
         </member>
         <member name="P:Json.Schema.TypeKeyword.Type">
@@ -4419,11 +5287,11 @@
             </summary>
             <param name="types">The expected types.</param>
         </member>
-        <member name="M:Json.Schema.TypeKeyword.Validate(Json.Schema.ValidationContext)">
+        <member name="M:Json.Schema.TypeKeyword.Evaluate(Json.Schema.EvaluationContext)">
             <summary>
-            Provides validation for the keyword.
+            Performs evaluation for the keyword.
             </summary>
-            <param name="context">Contextual details for the validation process.</param>
+            <param name="context">Contextual details for the evaluation process.</param>
         </member>
         <member name="M:Json.Schema.TypeKeyword.Equals(Json.Schema.TypeKeyword)">
             <summary>Indicates whether the current object is equal to another object of the same type.</summary>
@@ -4444,22 +5312,27 @@
             Handles `unevaluatedItems`.
             </summary>
         </member>
+        <member name="F:Json.Schema.UnevaluatedItemsKeyword.Name">
+            <summary>
+            The JSON name of the keyword.
+            </summary>
+        </member>
         <member name="P:Json.Schema.UnevaluatedItemsKeyword.Schema">
             <summary>
-            The schema by which to validation unevaluated items.
+            The schema by which to evaluate unevaluated items.
             </summary>
         </member>
         <member name="M:Json.Schema.UnevaluatedItemsKeyword.#ctor(Json.Schema.JsonSchema)">
             <summary>
             Creates a new <see cref="T:Json.Schema.UnevaluatedItemsKeyword"/>.
             </summary>
-            <param name="value">The schema by which to validation unevaluated items.</param>
+            <param name="value">The schema by which to evaluate unevaluated items.</param>
         </member>
-        <member name="M:Json.Schema.UnevaluatedItemsKeyword.Validate(Json.Schema.ValidationContext)">
+        <member name="M:Json.Schema.UnevaluatedItemsKeyword.Evaluate(Json.Schema.EvaluationContext)">
             <summary>
-            Provides validation for the keyword.
+            Performs evaluation for the keyword.
             </summary>
-            <param name="context">Contextual details for the validation process.</param>
+            <param name="context">Contextual details for the evaluation process.</param>
         </member>
         <member name="M:Json.Schema.UnevaluatedItemsKeyword.Equals(Json.Schema.UnevaluatedItemsKeyword)">
             <summary>Indicates whether the current object is equal to another object of the same type.</summary>
@@ -4480,9 +5353,14 @@
             Handles `unevaluatedProperties`.
             </summary>
         </member>
+        <member name="F:Json.Schema.UnevaluatedPropertiesKeyword.Name">
+            <summary>
+            The JSON name of the keyword.
+            </summary>
+        </member>
         <member name="P:Json.Schema.UnevaluatedPropertiesKeyword.Schema">
             <summary>
-            The schema by which to validation additional properties.
+            The schema by which to evaluate additional properties.
             </summary>
         </member>
         <member name="M:Json.Schema.UnevaluatedPropertiesKeyword.#ctor(Json.Schema.JsonSchema)">
@@ -4491,11 +5369,11 @@
             </summary>
             <param name="value"></param>
         </member>
-        <member name="M:Json.Schema.UnevaluatedPropertiesKeyword.Validate(Json.Schema.ValidationContext)">
+        <member name="M:Json.Schema.UnevaluatedPropertiesKeyword.Evaluate(Json.Schema.EvaluationContext)">
             <summary>
-            Provides validation for the keyword.
+            Performs evaluation for the keyword.
             </summary>
-            <param name="context">Contextual details for the validation process.</param>
+            <param name="context">Contextual details for the evaluation process.</param>
         </member>
         <member name="M:Json.Schema.UnevaluatedPropertiesKeyword.Equals(Json.Schema.UnevaluatedPropertiesKeyword)">
             <summary>Indicates whether the current object is equal to another object of the same type.</summary>
@@ -4516,6 +5394,11 @@
             Handles `uniqueItems`.
             </summary>
         </member>
+        <member name="F:Json.Schema.UniqueItemsKeyword.Name">
+            <summary>
+            The JSON name of the keyword.
+            </summary>
+        </member>
         <member name="P:Json.Schema.UniqueItemsKeyword.Value">
             <summary>
             Whether items should be unique.
@@ -4527,11 +5410,11 @@
             </summary>
             <param name="value">Whether items should be unique.</param>
         </member>
-        <member name="M:Json.Schema.UniqueItemsKeyword.Validate(Json.Schema.ValidationContext)">
+        <member name="M:Json.Schema.UniqueItemsKeyword.Evaluate(Json.Schema.EvaluationContext)">
             <summary>
-            Provides validation for the keyword.
+            Performs evaluation for the keyword.
             </summary>
-            <param name="context">Contextual details for the validation process.</param>
+            <param name="context">Contextual details for the evaluation process.</param>
         </member>
         <member name="M:Json.Schema.UniqueItemsKeyword.Equals(Json.Schema.UniqueItemsKeyword)">
             <summary>Indicates whether the current object is equal to another object of the same type.</summary>
@@ -4588,11 +5471,11 @@
             <param name="name">The name of the keyword.</param>
             <param name="value">The value of the keyword.</param>
         </member>
-        <member name="M:Json.Schema.UnrecognizedKeyword.Validate(Json.Schema.ValidationContext)">
+        <member name="M:Json.Schema.UnrecognizedKeyword.Evaluate(Json.Schema.EvaluationContext)">
             <summary>
-            Provides validation for the keyword.
+            Performs evaluation for the keyword.
             </summary>
-            <param name="context">Contextual details for the validation process.</param>
+            <param name="context">Contextual details for the evaluation process.</param>
         </member>
         <member name="M:Json.Schema.UnrecognizedKeyword.Equals(Json.Schema.UnrecognizedKeyword)">
             <summary>Indicates whether the current object is equal to another object of the same type.</summary>
@@ -4623,299 +5506,6 @@
             </returns>
             <exception cref="T:System.ArgumentNullException"><paramref name="uri" /> is <c>null</c>.</exception>
             <exception cref="T:System.InvalidOperationException"><paramref name="uri" /> has no parent, it refers to a root resource.</exception>
-        </member>
-        <member name="T:Json.Schema.ValidationContext">
-            <summary>
-            Provides a single source of data for validation operations.
-            </summary>
-        </member>
-        <member name="P:Json.Schema.ValidationContext.Options">
-            <summary>
-            The option set for the validation.
-            </summary>
-        </member>
-        <member name="P:Json.Schema.ValidationContext.SchemaRoot">
-            <summary>
-            The root schema.
-            </summary>
-        </member>
-        <member name="P:Json.Schema.ValidationContext.SchemaLocation">
-            <summary>
-            The current subschema location relative to the schema root.
-            </summary>
-        </member>
-        <member name="P:Json.Schema.ValidationContext.LocalSchema">
-            <summary>
-            The current subschema.
-            </summary>
-        </member>
-        <member name="P:Json.Schema.ValidationContext.InstanceRoot">
-            <summary>
-            The instance root.
-            </summary>
-        </member>
-        <member name="P:Json.Schema.ValidationContext.InstanceLocation">
-            <summary>
-            The current instance location relative to the instance root.
-            </summary>
-        </member>
-        <member name="P:Json.Schema.ValidationContext.LocalInstance">
-            <summary>
-            The current instance.
-            </summary>
-        </member>
-        <member name="P:Json.Schema.ValidationContext.CurrentUri">
-            <summary>
-            The current URI, based on `$id` and `$anchor` keywords present in the schema.
-            </summary>
-        </member>
-        <member name="P:Json.Schema.ValidationContext.CurrentAnchor">
-            <summary>
-            The current URI anchor.
-            </summary>
-        </member>
-        <member name="P:Json.Schema.ValidationContext.LocalResult">
-            <summary>
-            The result object for the current validation.
-            </summary>
-        </member>
-        <member name="P:Json.Schema.ValidationContext.ApplyOptimizations">
-            <summary>
-            Whether processing optimizations can be applied (output format = flag).
-            </summary>
-        </member>
-        <member name="M:Json.Schema.ValidationContext.Push(Json.Pointer.JsonPointer@,System.Text.Json.Nodes.JsonNode@,Json.Pointer.JsonPointer@,Json.Schema.JsonSchema@,System.Uri)">
-            <summary>
-            Pushes the state onto the stack and sets up for a nested layer of validation.
-            </summary>
-            <param name="instanceLocation">The location within the data instance root.</param>
-            <param name="instance">The data instance.</param>
-            <param name="subschemaLocation">The location within the schema root.</param>
-            <param name="subschema">The subschema.</param>
-            <param name="newUri">The URI of the subschema.</param>
-        </member>
-        <member name="M:Json.Schema.ValidationContext.Pop">
-            <summary>
-            Pops the state from the stack to return to a previous layer of validation.
-            </summary>
-        </member>
-        <member name="T:Json.Schema.ValidationOptions">
-            <summary>
-            Allows configuration of the validation process.
-            </summary>
-        </member>
-        <member name="P:Json.Schema.ValidationOptions.Default">
-            <summary>
-            The default settings.
-            </summary>
-        </member>
-        <member name="P:Json.Schema.ValidationOptions.ValidateAs">
-            <summary>
-            Indicates which schema draft to process as.  This will filter the keywords
-            of a schema based on their support.
-            </summary>
-        </member>
-        <member name="P:Json.Schema.ValidationOptions.ValidateMetaSchema">
-            <summary>
-            Indicates whether the schema should be validated against its `$schema` value.
-            this is not typically necessary.
-            </summary>
-        </member>
-        <member name="P:Json.Schema.ValidationOptions.OutputFormat">
-            <summary>
-            Specifies the output format.
-            </summary>
-        </member>
-        <member name="P:Json.Schema.ValidationOptions.SchemaRegistry">
-            <summary>
-            The local schema registry.  If a schema is not found here, it will
-            automatically check the global registry as well.
-            </summary>
-        </member>
-        <member name="P:Json.Schema.ValidationOptions.VocabularyRegistry">
-            <summary>
-            The local vocabulary registry.  If a schema is not found here, it will
-            automatically check the global registry as well.
-            </summary>
-        </member>
-        <member name="P:Json.Schema.ValidationOptions.DefaultBaseUri">
-            <summary>
-            Specifies a default URI to be used when a schema is missing a
-            </summary>
-        </member>
-        <member name="P:Json.Schema.ValidationOptions.LogIndentLevel">
-            <summary>
-            Gets or sets the indent level for the log.
-            </summary>
-        </member>
-        <member name="P:Json.Schema.ValidationOptions.Log">
-            <summary>
-            Gets or sets a log which will output processing information.
-            </summary>
-        </member>
-        <member name="P:Json.Schema.ValidationOptions.RequireFormatValidation">
-            <summary>
-            Specifies whether the `format` keyword should be required to provide
-            validation results.  Default is false, which just produces annotations
-            for drafts 2019-09 and prior or follows the behavior set forth by the
-            format-annotation vocabulary requirement in the `$vocabulary` keyword in
-            a meta-schema declaring draft 2020-12.
-            </summary>
-        </member>
-        <member name="P:Json.Schema.ValidationOptions.OnlyKnownFormats">
-            <summary>
-            Specifies whether the `format` keyword should fail validations for
-            unknown formats.  Default is false.
-            </summary>
-            <remarks>
-            This option is applied whether `format` is using annotation or
-            assertion behavior.
-            </remarks>
-        </member>
-        <member name="M:Json.Schema.ValidationOptions.#ctor">
-            <summary>
-            Create a new instance of the <see cref="T:Json.Schema.ValidationOptions"/> class.
-            </summary>
-        </member>
-        <member name="T:Json.Schema.ValidationResults">
-            <summary>
-            The results object for validations.
-            </summary>
-        </member>
-        <member name="T:Json.Schema.ValidationResults.ContextConsolidator">
-            <summary>
-            Consolidates annotations from multiple child results onto a single parent result.
-            Generally, a keyword will define how it handles its own consolidation.  This action
-            must be registered on startup.
-            </summary>
-            <param name="results">The validation results.</param>
-        </member>
-        <member name="P:Json.Schema.ValidationResults.IsValid">
-            <summary>
-            Indicates whether the validation passed or failed.
-            </summary>
-        </member>
-        <member name="P:Json.Schema.ValidationResults.Message">
-            <summary>
-            The error message, if any.
-            </summary>
-        </member>
-        <member name="P:Json.Schema.ValidationResults.SchemaLocation">
-            <summary>
-            The schema location that generated this node.
-            </summary>
-        </member>
-        <member name="P:Json.Schema.ValidationResults.InstanceLocation">
-            <summary>
-            The instance location that was processed.
-            </summary>
-        </member>
-        <member name="P:Json.Schema.ValidationResults.AbsoluteSchemaLocation">
-            <summary>
-            The absolute schema location.  Only available if the schema had an absolute URI ID.
-            </summary>
-        </member>
-        <member name="P:Json.Schema.ValidationResults.NestedResults">
-            <summary>
-            The collection of nested results.
-            </summary>
-        </member>
-        <member name="P:Json.Schema.ValidationResults.HasNestedResults">
-            <summary>
-            Gets whether there are nested results.
-            </summary>
-            <remarks>
-            Because <see cref="P:Json.Schema.ValidationResults.NestedResults"/> is lazily loaded, this property allows the check without
-            the side effect of allocating a list object.
-            </remarks>
-        </member>
-        <member name="P:Json.Schema.ValidationResults.Annotations">
-            <summary>
-            The collection of annotations from this node.
-            </summary>
-        </member>
-        <member name="P:Json.Schema.ValidationResults.HasAnnotations">
-            <summary>
-            Gets whether there are annotation.
-            </summary>
-            <remarks>
-            Because <see cref="P:Json.Schema.ValidationResults.Annotations"/> is lazily loaded, this property allows the check without
-            the side effect of allocating a list object.
-            </remarks>
-        </member>
-        <member name="P:Json.Schema.ValidationResults.Parent">
-            <summary>
-            Gets the parent result.
-            </summary>
-        </member>
-        <member name="M:Json.Schema.ValidationResults.ToDetailed">
-            <summary>
-            Transforms the results to the `details` format.
-            </summary>
-        </member>
-        <member name="M:Json.Schema.ValidationResults.ToBasic">
-            <summary>
-            Transforms the results to the `basic` format.
-            </summary>
-        </member>
-        <member name="M:Json.Schema.ValidationResults.ToFlag">
-            <summary>
-            Transforms the results to the `flag` format.
-            </summary>
-        </member>
-        <member name="M:Json.Schema.ValidationResults.ConsolidateAnnotations">
-            <summary>
-            Invokes all consolidation actions.  Should be called at the end of processing an applicator keyword.
-            </summary>
-        </member>
-        <member name="M:Json.Schema.ValidationResults.SetAnnotation(System.String,System.Object)">
-            <summary>
-            Sets an annotation.
-            </summary>
-            <param name="owner">The annotation key.  Typically the name of the keyword.</param>
-            <param name="value">The annotation value.</param>
-        </member>
-        <member name="M:Json.Schema.ValidationResults.RegisterConsolidationMethod(Json.Schema.ValidationResults.ContextConsolidator)">
-            <summary>
-            Registers a consolidation action.
-            </summary>
-            <param name="consolidateAnnotations">The action.</param>
-        </member>
-        <member name="M:Json.Schema.ValidationResults.TryGetAnnotation(System.String)">
-            <summary>
-            Tries to get an annotation.
-            </summary>
-            <param name="key">The annotation key.</param>
-            <returns>The annotation or null.</returns>
-        </member>
-        <member name="M:Json.Schema.ValidationResults.GetAllAnnotations``1(System.String)">
-            <summary>
-            Gets all annotations of a particular data type for the current validation level.
-            </summary>
-            <typeparam name="T">The data type.</typeparam>
-            <param name="key">The key under which the annotation is stored.  Typically a keyword.</param>
-            <returns>The set of all annotations for the current validation level.</returns>
-        </member>
-        <member name="M:Json.Schema.ValidationResults.Pass">
-            <summary>
-            Marks the result as valid.
-            </summary>
-        </member>
-        <member name="M:Json.Schema.ValidationResults.Fail(System.String)">
-            <summary>
-            Marks the result as invalid.
-            </summary>
-            <param name="message">(optional) An error message.</param>
-            <remarks>
-            For better support for customization, consider using the overload that takes parameters.
-            </remarks>
-        </member>
-        <member name="M:Json.Schema.ValidationResults.Fail(System.String,System.ValueTuple{System.String,System.Object}[])">
-            <summary>
-            Marks the result as invalid.
-            </summary>
-            <param name="message">The error message.</param>
-            <param name="parameters">Parameters to replace in the message.</param>
         </member>
         <member name="T:Json.Schema.Vocabularies">
             <summary>
@@ -5062,6 +5652,86 @@
             The Draft 2020-12 Content vocabulary.
             </summary>
         </member>
+        <member name="F:Json.Schema.Vocabularies.CoreNextId">
+            <summary>
+            The Draft 2020-12 Core vocabulary ID.
+            </summary>
+        </member>
+        <member name="F:Json.Schema.Vocabularies.UnevaluatedNextId">
+            <summary>
+            The Draft 2020-12 Unevaluated vocabulary ID.
+            </summary>
+        </member>
+        <member name="F:Json.Schema.Vocabularies.ApplicatorNextId">
+            <summary>
+            The Draft 2020-12 Applicator vocabulary ID.
+            </summary>
+        </member>
+        <member name="F:Json.Schema.Vocabularies.ValidationNextId">
+            <summary>
+            The Draft 2020-12 Validation vocabulary ID.
+            </summary>
+        </member>
+        <member name="F:Json.Schema.Vocabularies.MetadataNextId">
+            <summary>
+            The Draft 2020-12 Metadata vocabulary ID.
+            </summary>
+        </member>
+        <member name="F:Json.Schema.Vocabularies.FormatAnnotationNextId">
+            <summary>
+            The Draft 2020-12 Format vocabulary ID.
+            </summary>
+        </member>
+        <member name="F:Json.Schema.Vocabularies.FormatAssertionNextId">
+            <summary>
+            The Draft 2020-12 Format vocabulary ID.
+            </summary>
+        </member>
+        <member name="F:Json.Schema.Vocabularies.ContentNextId">
+            <summary>
+            The Draft 2020-12 Content vocabulary ID.
+            </summary>
+        </member>
+        <member name="F:Json.Schema.Vocabularies.CoreNext">
+            <summary>
+            The Draft 2020-12 Core vocabulary.
+            </summary>
+        </member>
+        <member name="F:Json.Schema.Vocabularies.UnevaluatedNext">
+            <summary>
+            The Draft 2020-12 Unevaluated vocabulary.
+            </summary>
+        </member>
+        <member name="F:Json.Schema.Vocabularies.ApplicatorNext">
+            <summary>
+            The Draft 2020-12 Applicator vocabulary.
+            </summary>
+        </member>
+        <member name="F:Json.Schema.Vocabularies.ValidationNext">
+            <summary>
+            The Draft 2020-12 Validation vocabulary.
+            </summary>
+        </member>
+        <member name="F:Json.Schema.Vocabularies.MetadataNext">
+            <summary>
+            The Draft 2020-12 Metadata vocabulary.
+            </summary>
+        </member>
+        <member name="F:Json.Schema.Vocabularies.FormatAnnotationNext">
+            <summary>
+            The Draft 2020-12 Format-Annotation vocabulary.
+            </summary>
+        </member>
+        <member name="F:Json.Schema.Vocabularies.FormatAssertionNext">
+            <summary>
+            The Draft 2020-12 Format-Assertion vocabulary.
+            </summary>
+        </member>
+        <member name="F:Json.Schema.Vocabularies.ContentNext">
+            <summary>
+            The Draft 2020-12 Content vocabulary.
+            </summary>
+        </member>
         <member name="T:Json.Schema.Vocabulary">
             <summary>
             Represents a Draft 2019-09 and later vocabulary.
@@ -5112,6 +5782,11 @@
             Handles `$vocabulary`.
             </summary>
         </member>
+        <member name="F:Json.Schema.VocabularyKeyword.Name">
+            <summary>
+            The JSON name of the keyword.
+            </summary>
+        </member>
         <member name="P:Json.Schema.VocabularyKeyword.Vocabulary">
             <summary>
             The collection of vocabulary requirements.
@@ -5123,11 +5798,11 @@
             </summary>
             <param name="values">The collection of vocabulary requirements.</param>
         </member>
-        <member name="M:Json.Schema.VocabularyKeyword.Validate(Json.Schema.ValidationContext)">
+        <member name="M:Json.Schema.VocabularyKeyword.Evaluate(Json.Schema.EvaluationContext)">
             <summary>
-            Provides validation for the keyword.
+            Performs evaluation for the keyword.
             </summary>
-            <param name="context">Contextual details for the validation process.</param>
+            <param name="context">Contextual details for the evaluation process.</param>
         </member>
         <member name="M:Json.Schema.VocabularyKeyword.Equals(Json.Schema.VocabularyKeyword)">
             <summary>Indicates whether the current object is equal to another object of the same type.</summary>
@@ -5182,6 +5857,11 @@
             Handles `writeOnly`.
             </summary>
         </member>
+        <member name="F:Json.Schema.WriteOnlyKeyword.Name">
+            <summary>
+            The JSON name of the keyword.
+            </summary>
+        </member>
         <member name="P:Json.Schema.WriteOnlyKeyword.Value">
             <summary>
             Whether the instance is read-only.
@@ -5193,11 +5873,11 @@
             </summary>
             <param name="value">Whether the instance is read-only.</param>
         </member>
-        <member name="M:Json.Schema.WriteOnlyKeyword.Validate(Json.Schema.ValidationContext)">
+        <member name="M:Json.Schema.WriteOnlyKeyword.Evaluate(Json.Schema.EvaluationContext)">
             <summary>
-            Provides validation for the keyword.
+            Performs evaluation for the keyword.
             </summary>
-            <param name="context">Contextual details for the validation process.</param>
+            <param name="context">Contextual details for the evaluation process.</param>
         </member>
         <member name="M:Json.Schema.WriteOnlyKeyword.Equals(Json.Schema.WriteOnlyKeyword)">
             <summary>Indicates whether the current object is equal to another object of the same type.</summary>
